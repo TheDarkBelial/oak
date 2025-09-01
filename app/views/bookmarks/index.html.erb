@@ -1,0 +1,44 @@
+<% content_for :title, "Bookmarks" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
+    <h1 class="font-bold text-4xl">Bookmarks</h1>
+    <div class="flex flex-row justify-between gap-4">
+      <div class="tooltip tooltip-bottom" data-tip="New Bookmark">
+        <%= link_to new_bookmark_path, class: "btn btn-primary btn-soft" do %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
+      </div>
+      <div class="tooltip tooltip-bottom" data-tip="Manage Categories">
+        <%= link_to categories_path, class: "btn hover:btn-primary" do %>
+          <i class="fa-solid fa-list-ul fill-primary"></i>
+        <% end %>
+      </div>
+      <%= link_to root_path, class: "btn hover:btn-primary" do %>
+        <i class="fa-regular fa-house fill-primary"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <%= turbo_stream_from :categories %>
+  <%= turbo_stream_from :bookmarks %>
+  <% if @categories.any? %>
+    <div class="flex flex-col gap-8">
+      <% @categories.find_each do |category| %>
+        <div>
+           <%= turbo_stream_from category %>
+          <h2 class="font-bold text-2xl mb-2"><%= category.name %></h2>
+          <ul class="list bg-base-200 rounded-box shadow-md" data-controller="sortable-bookmark" data-id="<%= category.id %>">
+            <%= render category.bookmarks.order(:position) %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center my-10">No bookmarks found.</p>
+  <% end %>
+</div>

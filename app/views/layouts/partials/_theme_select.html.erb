@@ -1,0 +1,41 @@
+<div class="dropdown dropdown-bottom dropdown-end fixed right-4 top-4 z-20">
+  <div tabindex="0" role="button" class="btn btn-ghost btn-sm group">
+    <%= render "layouts/partials/theme_icon" %>
+    <svg
+      width="12px"
+      height="12px"
+      class="inline-block h-2 w-2 fill-current opacity-60"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 2048 2048">
+      <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+    </svg>
+  </div>
+  <div class="dropdown-content backdrop-blur-xl rounded-box shadow-2xl border-primary/25 border-1">
+    <ul tabindex="0" class="menu menu-vertical flex-nowrap h-100 overflow-y-auto">
+      <li class="menu-title text-xs">Theme</li>
+      <li></li>
+      <li class="group">
+        <div class="flex flex-row gap-2 w-42">
+          <%= render "layouts/partials/theme_icon" %>
+          <%= Setting[:theme].titleize %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            viewBox="0 0 24 24" fill="currentColor" class="ml-auto h-3 w-3 shrink-0">
+            <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path>
+          </svg>
+        </div>
+      </li>
+      <li></li>
+      <% default_themes.filter { |theme| theme != Setting[:theme] }.each do |theme| %>
+        <%= form_with(model: Setting.find_by(slug: :theme), data: { turbo: false }) do |form| %>
+          <li>
+            <%= form.hidden_field :value, value: theme %>
+            <%= form.button class: "flex flex-row gap-2 w-42" do %>
+              <%= render "layouts/partials/theme_icon", theme: %>
+              <%= theme.titleize %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

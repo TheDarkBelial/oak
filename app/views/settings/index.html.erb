@@ -1,0 +1,204 @@
+<% content_for :title, "Settings" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="font-bold text-4xl">Settings</h1>
+    <div>
+      <%= link_to root_path, class: "btn hover:btn-primary" do %>
+        <i class="fa-regular fa-house fill-primary"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 shadow-lg gap-4">
+      <%= form_with(model: Setting.find_by(slug: :greetings_enabled), class: "w-full") do |form| %>
+        <%= form.label :name, class: "label text-lg font-bold w-full" do %>
+          <%= form.check_box :value, checked: Setting.find_by(slug: :greetings_enabled).parsed_value, class: "toggle", onchange: "this.form.submit()" %>
+          <%= Setting.find_by(slug: :greetings_enabled).name %>
+        <% end %>
+        <%= form.label :description, Setting.find_by(slug: :greetings_enabled).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :wise_words_enabled), class: "w-full") do |form| %>
+        <%= form.label :name, class: "label text-lg font-bold w-full" do %>
+          <%= form.check_box :value, checked: Setting.find_by(slug: :wise_words_enabled).parsed_value, class: "toggle", onchange: "this.form.submit()" %>
+          <%= Setting.find_by(slug: :wise_words_enabled).name %>
+        <% end %>
+        <%= form.label :description, Setting.find_by(slug: :wise_words_enabled).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :morning_greeting), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :morning_greeting).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :morning_greeting).default, class: "input w-full" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :morning_greeting).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :afternoon_greeting), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :afternoon_greeting).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :afternoon_greeting).default, class: "input w-full" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :afternoon_greeting).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :evening_greeting), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :evening_greeting).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :evening_greeting).default, class: "input w-full" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :evening_greeting).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :night_greeting), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :night_greeting).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :night_greeting).default, class: "input w-full" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :night_greeting).description %>
+      <% end %>
+    </fieldset>
+
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 shadow-lg gap-4">
+      <legend class="fieldset-legend">Date/Time Settings</legend>
+
+      <%= form_with(model: Setting.find_by(slug: :date_enabled), class: "w-full") do |form| %>
+        <%= form.label :name, class: "label text-lg font-bold w-full" do %>
+          <%= form.check_box :value, checked: Setting.find_by(slug: :date_enabled).parsed_value, class: "toggle", onchange: "this.form.submit()" %>
+          <%= Setting.find_by(slug: :date_enabled).name %>
+        <% end %>
+        <%= form.label :description, Setting.find_by(slug: :date_enabled).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :date_format), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :date_format).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :date_format).default, class: "input w-full font-mono" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :date_format).description %>
+        <a href="https://apidock.com/ruby/DateTime/strftime" class="link">Directive Documentation</a>
+      <% end %>
+
+      <div class="overflow-x-auto mt-2">
+        <table class="table table-xs">
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Description</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% SettingsHelper::DATE_FORMATTERS.each do |formatter| %>
+              <tr>
+                <td class="font-mono"><%= directive_format(formatter[:directives]) %></td>
+                <td><%= formatter[:description] %></td>
+                <td class="font-mono uppercase"><%= directive_example(formatter[:directives]) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <%= form_with(model: Setting.find_by(slug: :time_enabled), class: "w-full") do |form| %>
+        <%= form.label :name, class: "label text-lg font-bold w-full" do %>
+          <%= form.check_box :value, checked: Setting.find_by(slug: :time_enabled).parsed_value, class: "toggle", onchange: "this.form.submit()" %>
+          <%= Setting.find_by(slug: :time_enabled).name %>
+        <% end %>
+        <%= form.label :description, Setting.find_by(slug: :time_enabled).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :time_format), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :time_format).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :time_format).default, class: "input w-full font-mono" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :time_format).description %>
+        <a href="https://apidock.com/ruby/DateTime/strftime" class="link">Directive Documentation</a>
+      <% end %>
+
+      <div class="overflow-x-auto mt-2">
+        <table class="table table-xs">
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Description</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% SettingsHelper::TIME_FORMATTERS.each do |formatter| %>
+              <tr>
+                <td class="font-mono"><%= directive_format(formatter[:directives]) %></td>
+                <td><%= formatter[:description] %></td>
+                <td class="font-mono uppercase"><%= directive_example(formatter[:directives]) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <%= form_with(model: Setting.find_by(slug: :time_zone), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :time_zone).name, class: "label text-lg font-bold" %>
+        <%= form.select :value, options_from_collection_for_select(ActiveSupport::TimeZone.all, :name, :to_s, Setting[:time_zone]), {}, class: "select w-full", onchange: "this.form.submit()" %>
+        <%= form.label :description, Setting.find_by(slug: :time_zone).description %>
+      <% end %>
+    </fieldset>
+
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 shadow-lg gap-4">
+      <legend class="fieldset-legend">Weather Settings</legend>
+
+      <%= form_with(model: Setting.find_by(slug: :weather_enabled), class: "w-full") do |form| %>
+        <%= form.label :name, class: "label text-lg font-bold w-full" do %>
+          <%= form.check_box :value, checked: Setting.find_by(slug: :weather_enabled).parsed_value, class: "toggle", onchange: "this.form.submit()" %>
+          <%= Setting.find_by(slug: :weather_enabled).name %>
+        <% end %>
+        <%= form.label :description, Setting.find_by(slug: :weather_enabled).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :temperature_unit), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :temperature_unit).name, class: "label text-lg font-bold" %>
+        <%= form.select :value, [['Celsius', 'celsius'], ['Fahrenheit', 'fahrenheit']], {}, class: "select w-full", onchange: "this.form.submit()" %>
+        <%= form.label :description, Setting.find_by(slug: :temperature_unit).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :latitude), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :latitude).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :latitude).default, class: "input w-full" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :latitude).description %>
+      <% end %>
+
+      <%= form_with(model: Setting.find_by(slug: :longitude), class: "w-full") do |form| %>
+        <%= form.label :name, Setting.find_by(slug: :longitude).name, class: "label text-lg font-bold" %>
+        <div class="join join-vertical sm:join-horizontal w-full">
+          <%= form.text_field :value, placeholder: Setting.find_by(slug: :longitude).default, class: "input w-full" %>
+
+          <%= form.submit class: "btn btn-primary btn-soft" %>
+        </div>
+        <%= form.label :description, Setting.find_by(slug: :longitude).description %>
+      <% end %>
+    </fieldset>
+  </div>
+</div>

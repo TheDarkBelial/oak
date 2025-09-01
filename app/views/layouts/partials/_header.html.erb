@@ -1,0 +1,15 @@
+<div class="navbar fixed top-0 left-0 w-full p-4 bg-base-100/50 backdrop-blur-xl z-10">
+  <div class="flex-1">
+    <% unless controller_name == 'settings' %>
+      <%= turbo_stream_from :settings %>
+      <% Setting.find_each do |setting| %>
+        <%= turbo_stream_from setting %>
+      <% end %>
+      <%= link_to settings_path, tabindex: 0, role: "button", class: "group btn btn-ghost btn-sm " do %>
+        <%= inline_svg_tag "icon.svg", class: "size-6 fill-primary/25 group-hover:fill-primary" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%# This needs to exist outside the navbar for the backdrop blur to work. %>
+<%= render 'layouts/partials/theme_select' %>

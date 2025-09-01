@@ -16,6 +16,8 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
+# Add Inline SVGs [https://github.com/jamesmartin/inline_svg]
+gem "inline_svg"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -29,6 +31,12 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
+
+# Model sorting [https://github.com/brendon/acts_as_list]
+gem "acts_as_list"
+
+# Weather data [https://github.com/open-meteo-ruby/open-meteo-ruby]
+gem "open-meteo"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false

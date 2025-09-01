@@ -1,0 +1,43 @@
+<div class="flex w-full flex-col">
+  <p>
+    <span class="uppercase"><%= datetime %></span>
+    <span class="float-right"><%= temperature %></span>
+  </p>
+
+  <% if Setting[:greetings_enabled] || Setting[:wise_words_enabled] %>
+    <div class="divider"></div>
+
+    <div class="flex flex-col gap-4">
+      <% if Setting[:greetings_enabled] %>
+        <h1 class="text-5xl font-bold"><%= @greeting %></h1>
+      <% end %>
+      <% if Setting[:wise_words_enabled] %>
+        <p class="border-l-2 pl-2">
+          <span class="font-thin"><%= @wisdom.quote %></span><br>
+          <span class="font-medium"><%= @wisdom.author %></span>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="divider"></div>
+
+  <%= link_to "Applications", applications_path, class: "text-2xl font-bold mb-4 uppercase" %>
+
+  <%= turbo_stream_from :applications %>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <%= render partial: "application_puck", collection: @applications, as: :application %>
+  </div>
+
+  <%= link_to "Bookmarks", bookmarks_path, class: "text-2xl font-bold mt-12 mb-4 uppercase" %>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <% @categories.each do |category| %>
+      <div class="flex flex-col gap-4">
+        <%= link_to category.name, category_path(category), class: "text-lg font-bold uppercase" %>
+        <% category.bookmarks.order(:position).each do |bookmark| %>
+          <%= link_to bookmark.name, bookmark.url, target: :blank %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
