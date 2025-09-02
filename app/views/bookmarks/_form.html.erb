@@ -19,7 +19,7 @@
     <%= form.text_field :name, class: "input w-full" %>
 
     <%= form.label :url, class: "label" %>
-    <%= form.text_field :url, class: "input w-full" %>
+    <%= form.url_field :url, class: "input w-full" %>
 
     <%= form.label :category_id, class: "label" %>
     <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select a category" }, class: "select w-full" %>
