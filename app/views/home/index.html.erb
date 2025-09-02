@@ -35,7 +35,7 @@
       <div class="flex flex-col gap-4">
         <%= link_to category.name, category_path(category), class: "text-lg font-bold uppercase" %>
         <% category.bookmarks.order(:position).each do |bookmark| %>
-          <%= link_to bookmark.name, bookmark.url, target: :blank %>
+          <%= link_to bookmark.name, bookmark.url, target: :blank, class: "hover:border-l-2 hover:pl-2 transition-all" %>
         <% end %>
       </div>
     <% end %>
