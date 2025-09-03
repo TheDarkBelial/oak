@@ -1,0 +1,15 @@
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 shadow-lg gap-4">
+  <legend class="fieldset-legend">Date/Time Settings</legend>
+
+  <%= render "settings/inputs/toggle", setting: Setting.find_by(slug: :date_enabled) %>
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :date_format) %>
+  <%= render "format_table", formatters: SettingsHelper::DATE_FORMATTERS %>
+
+  <%= render "settings/inputs/toggle", setting: Setting.find_by(slug: :time_enabled) %>
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :time_format) %>
+  <%= render "format_table", formatters: SettingsHelper::TIME_FORMATTERS %>
+
+  <%= render "settings/inputs/select",
+             setting: Setting.find_by(slug: :time_zone),
+             options: options_from_collection_for_select(ActiveSupport::TimeZone.all, :name, :to_s, Setting[:time_zone]) %>
+</fieldset>

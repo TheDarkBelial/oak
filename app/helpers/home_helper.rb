@@ -1,5 +1,3 @@
-require "open_meteo"
-
 module HomeHelper
   def datetime
     data = [ date_tag, date_time_separator, live_time_tag ].compact

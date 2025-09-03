@@ -1,0 +1,9 @@
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 shadow-lg gap-4">
+  <legend class="fieldset-legend">Weather Settings</legend>
+
+  <%= render "settings/inputs/toggle", setting: Setting.find_by(slug: :weather_enabled) %>
+  <%= render "settings/inputs/select", setting: Setting.find_by(slug: :temperature_unit), options: [['Celsius', 'celsius'], ['Fahrenheit', 'fahrenheit']] %>
+
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :latitude) %>
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :longitude) %>
+</fieldset>

@@ -8,17 +8,21 @@
   <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
     <h1 class="font-bold text-4xl">Quotes</h1>
     <div class="flex flex-row justify-between gap-4">
-      <%= link_to new_quote_path, class: "btn btn-primary btn-soft" do %>
-        <i class="fa-solid fa-plus"></i>
-      <% end %>
+      <div class="tooltip tooltip-bottom" data-tip="New Quote">
+        <%= link_to new_quote_path, class: "btn btn-primary btn-soft" do %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
+      </div>
       <div class="tooltip tooltip-bottom" data-tip="Reroll Daily Quote">
         <%= link_to reroll_daily_quotes_path, class: "btn hover:btn-primary", data: { turbo_prefetch: false } do %>
           <i class="fa-solid fa-dice-d20 fill-primary"></i>
         <% end %>
       </div>
-      <%= link_to root_path, class: "btn hover:btn-primary" do %>
-        <i class="fa-regular fa-house fill-primary"></i>
-      <% end %>
+      <div class="tooltip tooltip-bottom" data-tip="Back">
+        <%= link_to settings_path, class: "btn hover:btn-primary" do %>
+          <i class="fa-solid fa-arrow-left"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 

@@ -2,7 +2,6 @@ class SettingsController < ApplicationController
    before_action :set_setting, only: %i[update]
 
   def index
-    @settings = Setting.all.order(:position)
   end
 
   def update

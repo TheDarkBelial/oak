@@ -1,0 +1,6 @@
+<%# locals: (setting:, options:) %>
+<%= form_with(model: setting, class: "w-full") do |form| %>
+  <%= form.label :name, setting.name, class: "label text-lg font-bold" %>
+  <%= form.select :value, options, {}, class: "select w-full", onchange: "this.form.submit()" %>
+  <%= form.label :description, setting.description, class: "text-base-content/48" %>
+<% end %>

@@ -18,9 +18,11 @@
           <i class="fa-solid fa-list-ul fill-primary"></i>
         <% end %>
       </div>
-      <%= link_to root_path, class: "btn hover:btn-primary" do %>
-        <i class="fa-regular fa-house fill-primary"></i>
-      <% end %>
+      <div class="tooltip tooltip-bottom" data-tip="Home">
+        <%= link_to root_path, class: "btn hover:btn-primary" do %>
+          <i class="fa-regular fa-house fill-primary"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 

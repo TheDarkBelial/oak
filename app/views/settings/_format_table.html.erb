@@ -1,0 +1,21 @@
+<%# locals: (formatters:) %>
+<div class="overflow-x-auto mt-2">
+  <table class="table table-xs">
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Description</th>
+        <th>Examples</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% formatters.each do |formatter| %>
+        <tr>
+          <td class="font-mono"><%= directive_format(formatter[:directives]) %></td>
+          <td><%= formatter[:description] %></td>
+          <td class="font-mono uppercase"><%= directive_example(formatter[:directives]) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

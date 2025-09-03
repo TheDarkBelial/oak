@@ -1,0 +1,10 @@
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 shadow-lg gap-4">
+  <%= render "settings/inputs/toggle", setting: Setting.find_by(slug: :greetings_enabled) %>
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :morning_greeting) %>
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :afternoon_greeting) %>
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :evening_greeting) %>
+  <%= render "settings/inputs/text", setting: Setting.find_by(slug: :night_greeting) %>
+
+  <%= render "settings/inputs/toggle", setting: Setting.find_by(slug: :quotes_enabled) %>
+  <%= link_to "Manage Quotes", quotes_path, class: "btn hover:btn-neutral btn-outline" %>
+</fieldset>
