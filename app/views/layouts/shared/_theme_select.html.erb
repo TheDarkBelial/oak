@@ -1,16 +1,16 @@
 <div class="dropdown dropdown-bottom dropdown-end fixed right-4 top-4 z-20">
   <div tabindex="0" role="button" class="btn btn-ghost btn-sm group">
-    <%= render "layouts/partials/theme_icon" %>
+    <%= render "layouts/shared/theme_icon" %>
     <%# I don't like the look of the Font Awesome chevron here. %>
     <%= inline_svg_tag("daisy_ui/chevron_down.svg", class: "inline-block h-2 w-2 fill-current opacity-60") %>
   </div>
-  <div class="dropdown-content backdrop-blur-xl rounded-box shadow-2xl border-primary/25 border-1">
+  <div class="dropdown-content backdrop-blur-xl rounded-box shadow-2xl border border-neutral">
     <ul tabindex="0" class="menu menu-vertical flex-nowrap h-100 overflow-y-auto">
       <li class="menu-title text-xs">Theme</li>
       <li></li>
       <li class="group">
         <div class="flex flex-row gap-2 w-42">
-          <%= render "layouts/partials/theme_icon" %>
+          <%= render "layouts/shared/theme_icon" %>
           <%= Setting[:theme].titleize %>
           <%# I don't like the look of the Font Awesome checkmark here. %>
           <%= inline_svg_tag("daisy_ui/checkmark.svg", class: "ml-auto h-3 w-3 shrink-0") %>
@@ -22,7 +22,7 @@
           <li>
             <%= form.hidden_field :value, value: theme %>
             <%= form.button class: "flex flex-row gap-2 w-42" do %>
-              <%= render "layouts/partials/theme_icon", theme: %>
+              <%= render "layouts/shared/theme_icon", theme: %>
               <%= theme.titleize %>
             <% end %>
           </li>

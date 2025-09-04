@@ -1,0 +1,23 @@
+<div class="flex w-full flex-col">
+  <p>
+    <span class="uppercase"><%= datetime %></span>
+    <span class="float-right"><%= temperature %></span>
+  </p>
+
+  <% if Setting[:greetings_enabled] || Setting[:quotes_enabled] %>
+    <div class="divider"></div>
+
+    <div class="flex flex-col gap-4">
+      <% if Setting[:greetings_enabled] %>
+        <h1 class="text-5xl font-bold"><%= @greeting %></h1>
+      <% end %>
+
+      <% if Setting[:quotes_enabled] %>
+        <p class="border-l-2 pl-2">
+          <span class="font-light"><%= @quote.quote %></span><br>
+          <span class="font-medium"><%= @quote.author %></span>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

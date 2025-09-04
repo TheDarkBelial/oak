@@ -16,12 +16,16 @@
     <% end %>
 
     <%= form.label :quote, class: "label" %>
-    <%= form.textarea :quote, class: "textarea w-full" %>
+    <%= form.textarea :quote, required: true, class: "textarea w-full validator" %>
 
     <%= form.label :author, class: "label" %>
-    <%= form.text_field :author, class: "input w-full" %>
+    <%= form.text_field :author, required: true, class: "input w-full validator" %>
 
     <%= form.submit class: "btn btn-primary mt-4" %>
-    <%= link_to "Back", quotes_path(anchor: quote.token), class: "btn btn-outline" %>
+    <% if quote.new_record? %>
+      <%= link_to "Back", quotes_path, class: "btn btn-outline" %>
+    <% else %>
+      <%= link_to "Back", quotes_path(anchor: quote.token), class: "btn btn-outline" %>
+    <% end %>
   <% end %>
 </fieldset>

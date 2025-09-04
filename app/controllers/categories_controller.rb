@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy!
 
-    redirect_to categories_path, notice: "Category destroyed.", status: :see_other
+    redirect_back fallback_location: categories_path, notice: "Category destroyed.", status: :see_other
   end
 
   private

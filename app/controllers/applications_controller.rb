@@ -38,7 +38,7 @@ class ApplicationsController < ApplicationController
   def destroy
     @application.destroy!
 
-    redirect_to applications_path, notice: "Application destroyed.", status: :see_other
+    redirect_back fallback_location: applications_path, notice: "Application destroyed.", status: :see_other
   end
 
   private

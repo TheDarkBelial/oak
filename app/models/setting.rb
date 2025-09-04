@@ -31,7 +31,7 @@ class Setting < ApplicationRecord
 
   def self.[](slug)
     Rails.cache.fetch("setting/#{slug}") do
-      Setting.find_by(slug:)&.parsed_value
+      Setting.find_by!(slug:).parsed_value
     end
   end
 

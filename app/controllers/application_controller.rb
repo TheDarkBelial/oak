@@ -3,9 +3,26 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   around_action :set_time_zone
 
+  add_flash_types :info, :success, :warning, :error
+
+  rescue_from StandardError do |error|
+    handle_error(error, status: 500)
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |error|
+    handle_error(error, status: 404)
+  end
+
   private
 
   def set_time_zone(&block)
     Time.use_zone(Setting["time_zone"], &block)
+  end
+
+  def handle_error(error, status:)
+    Rails.logger.error(error.full_message)
+    raise if Rails.env.development?
+
+    redirect_to error_path(status)
   end
 end

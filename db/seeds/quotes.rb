@@ -49,7 +49,6 @@ QUOTES = [
   { quote: "It is the mark of an educated mind to be able to entertain a thought without accepting it.", author: "Aristotle" },
   { quote: "The secret of life, though, is to fall seven times and to get up eight times.", author: "Paulo Coelho" },
   { quote: "Never let your sense of morals prevent you from doing what is right.", author: "Isaac Asimov" },
-  { quote: "Turn your wounds into wisdom.", author: "Oprah Winfrey" },
   { quote: "The simple things are also the most extraordinary things, and only the wise can see them.", author: "Paulo Coelho" },
   { quote: "There are three things all wise men fear: the sea in storm, a night with no moon, and the anger of a gentle man.", author: "Patrick Rothfuss" },
   { quote: "By three methods we may learn wisdom: First, by reflection, which is noblest; Second, by imitation, which is easiest; and third by experience, which is the bitterest.", author: "Confucious" },

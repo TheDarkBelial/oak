@@ -38,7 +38,7 @@ class QuotesController < ApplicationController
   def destroy
     @quote.destroy!
 
-    redirect_to quotes_path, notice: "Quote destroyed.", status: :see_other
+    redirect_back fallback_location: quotes_path, notice: "Quote destroyed.", status: :see_other
   end
 
   def reroll_daily

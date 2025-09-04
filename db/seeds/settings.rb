@@ -61,6 +61,17 @@ Setting.create!(
 )
 
 ##
+# Bookmark Settings
+#
+Setting.create!(
+  slug: "bookmarks_enabled",
+  name: "Show Bookmarks",
+  description: "Whether or not to show bookmarks.",
+  default: 1,
+  value_type: :boolean
+)
+
+##
 # Date/Time Settings
 #
 Setting.create!(

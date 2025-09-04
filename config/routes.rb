@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  match "/:code", to: "errors#show", via: :all, constraints: { code: /\d{3}/ }, as: :error
 end

@@ -38,7 +38,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark.destroy!
 
-    redirect_to bookmarks_path, notice: "Bookmark destroyed.", status: :see_other
+    redirect_back fallback_location: bookmarks_path, notice: "Bookmark destroyed.", status: :see_other
   end
 
   private

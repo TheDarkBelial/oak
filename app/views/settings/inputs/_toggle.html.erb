@@ -1,8 +1,8 @@
 <%# locals: (setting:) %>
 <%= form_with(model: setting, class: "w-full") do |form| %>
-  <%= form.label :name, class: "label text-lg font-bold w-full" do %>
-    <%= form.check_box :value, checked: setting.parsed_value, class: "toggle", onchange: "this.form.submit()" %>
+  <%= form.label :name, class: "text-lg font-bold w-full" do %>
+    <%= form.check_box :value, checked: setting.parsed_value, onchange: "this.form.submit()" %>
     <%= setting.name %>
   <% end %>
-  <%= form.label :description, setting.description, class: "text-base-content/48" %>
+  <%= form.label :description, setting.description, class: "block text-base-content/48" %>
 <% end %>

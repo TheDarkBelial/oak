@@ -1,47 +1,8 @@
 <div class="flex w-full flex-col">
-  <p>
-    <span class="uppercase"><%= datetime %></span>
-    <span class="float-right"><%= temperature %></span>
-  </p>
-
-  <% if Setting[:greetings_enabled] || Setting[:quotes_enabled] %>
-    <div class="divider"></div>
-
-    <div class="flex flex-col gap-4">
-      <% if Setting[:greetings_enabled] %>
-        <h1 class="text-5xl font-bold"><%= @greeting %></h1>
-      <% end %>
-      <% if Setting[:quotes_enabled] %>
-        <p class="border-l-2 pl-2">
-          <span class="font-light"><%= @quote.quote %></span><br>
-          <span class="font-medium"><%= @quote.author %></span>
-        </p>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "home/sections/heading" %>
 
   <div class="divider"></div>
 
-  <%= link_to "Applications", applications_path, class: "text-2xl font-bold mb-4 uppercase" %>
-
-  <%= turbo_stream_from :applications %>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-    <%= render partial: "application_puck", collection: @applications, as: :application %>
-  </div>
-
-  <%= turbo_stream_from :categories %>
-  <%= turbo_stream_from :bookmarks %>
-  <%= link_to "Bookmarks", bookmarks_path, class: "text-2xl font-bold mt-12 mb-4 uppercase" %>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
-    <% @categories.each do |category| %>
-      <div class="flex flex-col gap-2">
-        <%= turbo_stream_from category, class: "hidden" %>
-        <%= link_to category.name, category_path(category), class: "text-lg text-base-content/32 font-bold uppercase" %>
-        <% category.bookmarks.order(:position).each do |bookmark| %>
-          <%= turbo_stream_from bookmark, class: "hidden" %>
-          <%= link_to bookmark.name, bookmark.url, target: :blank, class: "hover:border-l-2 hover:pl-2 transition-all" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= render "home/sections/applications" %>
+  <%= render "home/sections/bookmarks" %>
 </div>
