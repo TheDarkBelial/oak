@@ -8,3 +8,7 @@
 @plugin "./daisyui.js" {
   themes: all;
 }
+
+.turbo-progress-bar {
+  @apply bg-primary;
+}

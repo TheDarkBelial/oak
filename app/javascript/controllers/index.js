@@ -8,7 +8,7 @@ eagerLoadControllersFrom("controllers", application)
  * THIS IS A TEMPORARY WORKAROUND.
  */
 import StimulusSortable from "stimulus-sortable"
-application.register('sortable', StimulusSortable)
+application.register("sortable", StimulusSortable)
 
 import { Controller } from "@hotwired/stimulus"
 import Sortable from "sortablejs"
