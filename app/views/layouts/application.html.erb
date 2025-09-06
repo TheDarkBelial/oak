@@ -24,7 +24,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="max-w-7xl mx-auto">
+  <body class="max-w-7xl mx-auto" data-controller="theme" data-theme-slug-value="<%= Setting[:theme] %>">
     <%= render "layouts/shared/header" %>
     <main class="container mx-auto my-18 px-5 flex">
       <%= yield %>

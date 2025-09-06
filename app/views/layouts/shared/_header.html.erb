@@ -8,6 +8,8 @@
       <%= link_to settings_path, tabindex: 0, role: "button", class: "group btn btn-ghost btn-sm " do %>
         <%= inline_svg_tag "icon.svg", class: "size-6 fill-primary/25 group-hover:fill-primary" %>
       <% end %>
+    <% else %>
+      <%= turbo_stream_from Setting.find_by(slug: "theme") %>
     <% end %>
   </div>
 </div>

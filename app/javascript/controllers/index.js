@@ -14,7 +14,27 @@ import { Controller } from "@hotwired/stimulus"
 import Sortable from "sortablejs"
 import { patch } from "@rails/request.js"
 
-class SortableBookmark extends Controller {
+class ThemeController extends Controller {
+  static values = {
+    slug: String
+  }
+
+  connect() {
+    this.#updateHtmlTheme()
+  }
+
+  slugValueChanged() {
+    this.#updateHtmlTheme()
+  }
+
+  #updateHtmlTheme() {
+    document.documentElement.dataset.theme = this.slugValue
+  }
+}
+
+application.register("theme", ThemeController)
+
+class SortableBookmarkController extends Controller {
   connect() {
     this.sortable = new Sortable(this.element, {
       group: "bookmarks",
@@ -40,4 +60,4 @@ class SortableBookmark extends Controller {
   }
 }
 
-application.register("sortable-bookmark", SortableBookmark)
+application.register("sortable-bookmark", SortableBookmarkController)

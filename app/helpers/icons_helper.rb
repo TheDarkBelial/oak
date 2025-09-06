@@ -6,7 +6,11 @@ module IconsHelper
   def icon_tag(icon_variant, **opts)
     path = icon_path(icon_variant.slug, format: icon_variant.format)
 
-    icon_variant.svg? ? inline_svg_tag(icon_variant, **opts) : image_tag(path, **opts)
+    if icon_variant.svg?
+      inline_svg_tag(icon_variant, **opts)
+    else
+      image_tag("#{path}?theme=#{Current.theme.slug}", **opts)
+    end
   end
 
   protected
