@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :applications, param: :token
   resources :bookmarks, param: :token
   resources :categories, param: :token
-  resources :icons
+  resources :icons, param: :slug, only: %i[show]
   resources :quotes, param: :token do
     collection do
       get :reroll_daily

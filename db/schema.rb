@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_02_162340) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_05_180423) do
   create_table "applications", force: :cascade do |t|
     t.integer "icon_id", null: false
     t.string "token", null: false
@@ -81,6 +81,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_02_162340) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_settings_on_name", unique: true
     t.index ["slug"], name: "index_settings_on_slug", unique: true
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.string "slug", null: false
+    t.string "name", null: false
+    t.string "color_primary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_themes_on_slug", unique: true
   end
 
   add_foreign_key "applications", "icons"

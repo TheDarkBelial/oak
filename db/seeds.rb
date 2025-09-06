@@ -11,3 +11,4 @@
 load Rails.root.join("db/seeds/icons.rb")
 load Rails.root.join("db/seeds/quotes.rb")
 load Rails.root.join("db/seeds/settings.rb")
+load Rails.root.join("db/seeds/themes.rb")

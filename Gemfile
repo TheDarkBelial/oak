@@ -38,6 +38,9 @@ gem "acts_as_list"
 # Weather data [https://github.com/open-meteo-ruby/open-meteo-ruby]
 gem "open-meteo"
 
+# Image processing and manipulation [https://github.com/rmagick/rmagick]
+gem "rmagick"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -64,6 +67,10 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Better error page for development [https://github.com/BetterErrors/better_errors]
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
