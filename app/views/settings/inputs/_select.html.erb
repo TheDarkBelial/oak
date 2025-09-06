@@ -2,5 +2,5 @@
 <%= form_with(model: setting, class: "w-full") do |form| %>
   <%= form.label :name, setting.name, class: "text-lg font-bold" %>
   <%= form.select :value, options, {}, class: "w-full", onchange: "this.form.submit()" %>
-  <%= form.label :description, setting.description, class: "text-base-content/48" %>
+  <span class="block text-base-content/48"><%= setting.description %></span>
 <% end %>

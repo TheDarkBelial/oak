@@ -4,5 +4,5 @@
     <%= form.check_box :value, checked: setting.parsed_value, onchange: "this.form.submit()" %>
     <%= setting.name %>
   <% end %>
-  <%= form.label :description, setting.description, class: "block text-base-content/48" %>
+  <span class="block text-base-content/48"><%= setting.description %></span>
 <% end %>
