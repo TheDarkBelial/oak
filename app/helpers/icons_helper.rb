@@ -21,11 +21,14 @@ module IconsHelper
 
   def colorize_png(icon)
     Rails.cache.fetch([ icon, icon_color ], expires_in: 12.hours) do
-      Magick::Image
-        .read(icon_asset_path(icon)).first
-        .quantize(256, Magick::GRAYColorspace)
-        .colorize(0.9, 0.9, 0.9, icon_color)
-        .to_blob
+      image = Magick::Image.read(icon_asset_path(icon)).first
+      image.format = "PNG"
+      image.fuzz = "10%"
+
+      image.quantize(256, Magick::GRAYColorspace)
+          .transparent("white")
+          .colorize(0.9, 0.9, 0.9, icon_color)
+          .to_blob
     end
   end
 
