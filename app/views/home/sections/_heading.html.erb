@@ -1,8 +1,10 @@
 <div class="flex w-full flex-col">
-  <p>
-    <span class="uppercase"><%= datetime %></span>
-    <span class="float-right"><%= temperature %></span>
-  </p>
+  <div class="flex flex-wrap gap-2">
+    <%= date_tag(class: "uppercase") %>
+    <%= content_tag(:span, "–") if Setting[:date_enabled] && Setting[:time_enabled] %>
+    <%= time_tag(class: "uppercase") %>
+    <%= temperature_tag(class: "w-full sm:w-auto sm:ml-auto") %>
+  </div>
 
   <% if Setting[:greetings_enabled] || Setting[:quotes_enabled] %>
     <div class="divider"></div>

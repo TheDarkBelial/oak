@@ -1,36 +1,25 @@
 module HomeHelper
-  def datetime
-    data = [ date_tag, date_time_separator, live_time_tag ].compact
-    return if data.blank?
-
-    safe_join data
-  end
-
-  def temperature
-    return unless Setting[:weather_enabled]
-
-    data = WeatherService.current
-
-    "#{data.temperature_2m}#{WeatherService.temperature_unit}"
-  end
-
-  private
-
-  def date_tag
+  def date_tag(**opts)
     return unless Setting[:date_enabled]
 
-    content_tag(:span) { Time.current.strftime(Setting[:date_format]) }
+    content_tag(:span, **opts) do
+      Time.current.strftime(Setting[:date_format])
+    end
   end
 
-  def date_time_separator
-    " &ndash; ".html_safe if Setting[:date_enabled] && Setting[:time_enabled]
-  end
-
-  def live_time_tag
+  def time_tag(**opts)
     return unless Setting[:time_enabled]
 
-    content_tag(:span) do
+    content_tag(:span, **opts) do
       Time.current.strftime(Setting[:time_format])
+    end
+  end
+
+  def temperature_tag(**opts)
+    return unless Setting[:weather_enabled]
+
+    content_tag(:span, **opts) do
+      "#{WeatherService.current.temperature_2m}#{WeatherService.temperature_unit}"
     end
   end
 end
