@@ -1,0 +1,10 @@
+<%= turbo_frame_tag :home, class: "flex w-full flex-col" do %>
+  <div class="flex w-full flex-col active:pointer-events-none">
+    <%= render "home/sections/heading" %>
+
+    <div class="divider"></div>
+
+    <%= render "home/sections/applications" %>
+    <%= render "home/sections/bookmarks" %>
+  </div>
+<% end %>

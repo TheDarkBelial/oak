@@ -15,11 +15,11 @@
       </div>
     <% end %>
 
-    <%= form.label :quote, class: "label" %>
-    <%= form.textarea :quote, required: true, class: "textarea w-full validator" %>
+    <%= form.label :quote %>
+    <%= form.textarea :quote, required: true, class: "w-full validator" %>
 
-    <%= form.label :author, class: "label" %>
-    <%= form.text_field :author, required: true, class: "input w-full validator" %>
+    <%= form.label :author %>
+    <%= form.text_field :author, required: true, class: "w-full validator" %>
 
     <%= form.submit class: "btn btn-primary mt-4" %>
     <% if quote.new_record? %>

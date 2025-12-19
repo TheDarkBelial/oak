@@ -1,4 +1,7 @@
 class Application < ApplicationRecord
+  include Identifiable
+
+  identifies_by :token
   has_secure_token :token
 
   acts_as_list
@@ -9,6 +12,4 @@ class Application < ApplicationRecord
   has_one :icon, through: :icon_variant
 
   validates :token, :name, :url, presence: true
-
-  def to_param = token
 end

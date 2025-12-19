@@ -1,0 +1,35 @@
+<li id="<%= theme.token %>" class="list-row hover:bg-base-300">
+  <div class="scale-150 my-auto mx-2">
+    <%= render "layouts/shared/theme_icon", theme: theme.token %>
+  </div>
+  <div class="my-auto">
+    <%= turbo_stream_from theme %>
+    <div><%= theme.name %></div>
+  </div>
+  <div class="flex flex-col sm:flex-row gap-4 my-auto">
+    <%= form_with(model: theme, class: "my-auto") do |form| %>
+      <div class="tooltip" data-tip="Enabled">
+        <%= form.check_box :enabled, class: "toggle-lg", onchange: "this.form.submit()" %>
+      </div>
+    <% end %>
+    <% if theme.custom? %>
+      <div class="tooltip" data-tip="Edit">
+        <%= link_to edit_theme_path(theme), class: "btn btn-soft hover:btn-primary" do %>
+          <i class="fa-solid fa-pen"></i>
+        <% end %>
+      </div>
+
+      <div class="tooltip" data-tip="Delete">
+        <%= button_to theme, method: :delete, class: "btn btn-error btn-soft hover:btn-error", data: { turbo_confirm: "Are you sure?" } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="tooltip" data-tip="Clone">
+        <%= link_to new_theme_path(clone: theme), class: "btn btn-soft hover:btn-primary" do %>
+          <i class="fa-solid fa-clone"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</li>

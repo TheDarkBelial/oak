@@ -2,18 +2,18 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class ThemeController extends Controller {
   static values = {
-    slug: String
+    token: String
   }
 
   connect() {
     this.#updateHtmlTheme()
   }
 
-  slugValueChanged() {
+  tokenValueChanged() {
     this.#updateHtmlTheme()
   }
 
   #updateHtmlTheme() {
-    document.documentElement.dataset.theme = this.slugValue
+    document.documentElement.dataset.theme = this.tokenValue
   }
 }

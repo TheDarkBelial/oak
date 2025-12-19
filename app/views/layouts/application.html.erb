@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="<%= Setting[:theme] %>">
+<html data-theme="<%= Current.theme.token %>">
   <head>
     <title><%= ["Oak", content_for(:title)].compact.join(" | ") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,7 +7,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= turbo_refreshes_with method: :morph, scroll: :preserve  %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
 
     <%= yield :head %>
 
@@ -22,9 +22,13 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= Theme.find_each do |theme| %>
+      <%= theme_stylesheet_tag theme %>
+    <% end %>
   </head>
 
-  <body class="max-w-7xl mx-auto" data-controller="theme" data-theme-slug-value="<%= Setting[:theme] %>">
+  <body class="max-w-7xl mx-auto" data-controller="theme" data-theme-token-value="<%= Current.theme.token %>">
     <%= render "layouts/shared/header" %>
     <main class="container mx-auto my-18 px-5 flex">
       <%= yield %>

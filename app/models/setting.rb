@@ -1,4 +1,7 @@
 class Setting < ApplicationRecord
+  include Identifiable
+
+  identifies_by :slug
   broadcasts_refreshes
 
   acts_as_list
@@ -13,8 +16,6 @@ class Setting < ApplicationRecord
     float: 2,
     string: 3
   }, validate: true
-
-  def to_param = slug
 
   def parsed_value
     case value_type.to_sym

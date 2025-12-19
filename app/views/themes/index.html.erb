@@ -1,0 +1,48 @@
+<% content_for :title, "Themes" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
+    <h1 class="font-bold text-4xl">Themes</h1>
+    <div class="flex flex-row justify-between gap-4">
+      <div class="tooltip tooltip-bottom" data-tip="New Theme">
+        <%= link_to new_theme_path, class: "btn btn-primary btn-soft" do %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
+      </div>
+      <div class="tooltip tooltip-bottom" data-tip="Home">
+        <%= link_to root_path, class: "btn hover:btn-primary" do %>
+          <i class="fa-regular fa-house fill-primary"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= turbo_stream_from :themes %>
+  <% if @themes.any? %>
+    <div class="flex flex-col gap-8">
+      <% if @themes.custom.any? %>
+        <div>
+          <h2 class="font-bold text-2xl mb-2">Custom Themes</h2>
+          <ul class="list bg-base-200 rounded-box shadow-md">
+            <%= render @themes.custom %>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if @themes.standard.any? %>
+        <div>
+          <h2 class="font-bold text-2xl mb-2">Standard Themes</h2>
+          <ul class="list bg-base-200 rounded-box shadow-md">
+            <%= render @themes.standard %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center my-10">No themes found.</p>
+  <% end %>
+</div>

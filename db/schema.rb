@@ -92,12 +92,42 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_06_172646) do
   end
 
   create_table "themes", force: :cascade do |t|
-    t.string "slug", null: false
+    t.string "token", null: false
     t.string "name", null: false
-    t.string "color_primary"
+    t.boolean "custom", default: true, null: false
+    t.boolean "enabled", default: true, null: false
+    t.integer "color_scheme", default: 0, null: false
+    t.string "color_base_100", default: "oklch(20.84% 0.008 17.911)", null: false
+    t.string "color_base_200", default: "oklch(18.522% 0.007 17.911)", null: false
+    t.string "color_base_300", default: "oklch(16.203% 0.007 17.911)", null: false
+    t.string "color_base_content", default: "oklch(83.768% 0.001 17.911)", null: false
+    t.string "color_primary", default: "oklch(68.628% 0.185 148.958)", null: false
+    t.string "color_primary_content", default: "oklch(0% 0 0)", null: false
+    t.string "color_secondary", default: "oklch(69.776% 0.135 168.327)", null: false
+    t.string "color_secondary_content", default: "oklch(13.955% 0.027 168.327)", null: false
+    t.string "color_accent", default: "oklch(70.628% 0.119 185.713)", null: false
+    t.string "color_accent_content", default: "oklch(14.125% 0.023 185.713)", null: false
+    t.string "color_neutral", default: "oklch(30.698% 0.039 171.364)", null: false
+    t.string "color_neutral_content", default: "oklch(86.139% 0.007 171.364)", null: false
+    t.string "color_info", default: "oklch(72.06% 0.191 231.6)", null: false
+    t.string "color_info_content", default: "oklch(0% 0 0)", null: false
+    t.string "color_success", default: "oklch(64.8% 0.15 160)", null: false
+    t.string "color_success_content", default: "oklch(0% 0 0)", null: false
+    t.string "color_warning", default: "oklch(84.71% 0.199 83.87)", null: false
+    t.string "color_warning_content", default: "oklch(0% 0 0)", null: false
+    t.string "color_error", default: "oklch(71.76% 0.221 22.18)", null: false
+    t.string "color_error_content", default: "oklch(0% 0 0)", null: false
+    t.float "radius_selector", default: 1.0, null: false
+    t.float "radius_field", default: 2.0, null: false
+    t.float "radius_box", default: 1.0, null: false
+    t.float "size_selector", default: 0.25, null: false
+    t.float "size_field", default: 0.25, null: false
+    t.float "border", default: 1.0, null: false
+    t.boolean "depth", default: false, null: false
+    t.boolean "noise", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_themes_on_slug", unique: true
+    t.index ["token"], name: "index_themes_on_token", unique: true
   end
 
   add_foreign_key "applications", "icon_variants"

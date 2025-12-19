@@ -4,7 +4,7 @@
 Setting.find_or_initialize_by(slug: "theme").update!(
   name: "Theme",
   description: "The theme of the application.",
-  default: "coffee",
+  default: Theme.default.token,
   value_type: :string
 )
 

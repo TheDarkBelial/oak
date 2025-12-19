@@ -1,4 +1,7 @@
 class Quote < ApplicationRecord
+  include Identifiable
+
+  identifies_by :token
   has_secure_token :token
 
   acts_as_list
@@ -8,8 +11,6 @@ class Quote < ApplicationRecord
   after_commit :clear_daily_pick, if: :daily_pick?
 
   validates :token, :quote, :author, presence: true
-
-  def to_param = token
 
   def daily_pick?
     Quote.daily_pick == self

@@ -14,4 +14,4 @@
   </div>
 </div>
 <%# This needs to exist outside the navbar for the backdrop blur to work. %>
-<%= render 'layouts/shared/theme_select' %>
+<%= render 'layouts/shared/theme_select' unless controller_name == 'themes' && action_name.in?(%w[new edit]) %>

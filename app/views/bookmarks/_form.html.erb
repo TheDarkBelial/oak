@@ -16,14 +16,14 @@
     <% end %>
 
 
-    <%= form.label :name, class: "label" %>
-    <%= form.text_field :name, required: true, class: "input w-full validator" %>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true, class: "w-full validator" %>
 
-    <%= form.label :url, class: "label" %>
-    <%= form.url_field :url, required: true, class: "input w-full validator" %>
+    <%= form.label :url %>
+    <%= form.url_field :url, required: true, class: "w-full validator" %>
 
-    <%= form.label :category_id, class: "label" %>
-    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select a category", required: true }, class: "select w-full validator" %>
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select a category", required: true }, class: "w-full validator" %>
 
     <%= form.submit class: "btn btn-primary mt-4" %>
     <% if bookmark.new_record? %>

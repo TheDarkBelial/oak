@@ -6,7 +6,7 @@ class Current < ActiveSupport::CurrentAttributes
   private
 
   def self.defaulted_theme
-    Theme.find_by(slug: Setting[:theme]) || Theme.default
+    Theme.find_by(token: Setting[:theme]) || Theme.default
   end
   private_class_method :defaulted_theme
 

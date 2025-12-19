@@ -8,4 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "stimulus-sortable" # @4.1.1
 pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.12
 pin "sortablejs" # @1.15.6
-pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-free@7.0.0/js/all.js" # @7.0.0
+pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-free@7.0.1/js/all.js" # @7.0.1

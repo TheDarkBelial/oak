@@ -1,0 +1,240 @@
+<% content_for :head do %>
+  <%= theme_stylesheet_tag theme %>
+<% end if theme.new_record? %>
+<fieldset
+  class="fieldset bg-base-200 border-base-300 rounded-box border p-4 shadow-lg w-lg md:w-lg lg:w-full mx-auto"
+  data-controller="theme-editor"
+  data-theme-editor-style-id-value="<%= dom_id(theme, :styles) %>"
+  data-theme-editor-settings-value="<%= theme.to_json %>">
+  <legend class="fieldset-legend"><%= content_for(:title) %></legend>
+
+  <div class="flex gap-4">
+    <div class="w-full lg:w-auto lg:min-w-xs fieldset">
+      <%# Turbo is disabled to allow for redirects with anchors: https://github.com/hotwired/turbo/issues/211 %>
+      <%= form_with(model: theme, class: "contents", data: { turbo: false }) do |form| %>
+        <% if theme.errors.any? %>
+          <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+            <h2><%= pluralize(theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
+
+            <ul class="list-disc ml-6">
+              <% theme.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form.label :name %>
+        <%= form.text_field :name, required: true, class: "w-full validator" %>
+
+        <%= form.label :color_scheme %>
+        <%= form.select :color_scheme, Theme.color_schemes.map { |k, _v| [k.titleize, k] }, { prompt: "Select a color scheme", required: true }, class: "w-full validator" %>
+
+        <div class="divider">Colors</div>
+
+        <div class="flex flex-col font-ubuntu gap-2">
+          <%= form.label :color_base, "Base" %>
+          <div class="grid grid-cols-4 gap-2">
+            <div class="tooltip" data-tip="Background">
+              <%= form.oklch_field :color_base_100, label: "100", class: "bg-base-100 text-base-content", data: { action: "change->theme-editor#update", setting: :color_base_100 } %>
+            </div>
+            <div class="tooltip" data-tip="Background">
+              <%= form.oklch_field :color_base_200, label: "200", class: "bg-base-200 text-base-content", data: { action: "change->theme-editor#update", setting: :color_base_200 } %>
+            </div>
+            <div class="tooltip" data-tip="Background">
+              <%= form.oklch_field :color_base_300, label: "300", class: "bg-base-300 text-base-content", data: { action: "change->theme-editor#update", setting: :color_base_300 } %>
+            </div>
+            <div class="tooltip" data-tip="Text">
+              <%= form.oklch_field :color_base_content, label: "OAK", class: "bg-base-100 text-base-content", data: { action: "change->theme-editor#update", setting: :color_base_content } %>
+            </div>
+          </div>
+
+          <div class="flex flex-row">
+            <div class="grid grid-cols-2 gap-2 mx-auto">
+              <%= form.label :color_primary, "Primary", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_primary, label: "", class: "bg-primary text-base-content", data: { action: "change->theme-editor#update", setting: :color_primary } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_primary_content, label: "P", class: "bg-primary text-primary-content", data: { action: "change->theme-editor#update", setting: :color_primary_content } %>
+              </div>
+
+              <%= form.label :color_accent, "Accent", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_accent, label: "", class: "bg-accent text-base-content", data: { action: "change->theme-editor#update", setting: :color_accent } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_accent_content, label: "A", class: "bg-accent text-accent-content", data: { action: "change->theme-editor#update", setting: :color_accent_content } %>
+              </div>
+
+              <%= form.label :color_secondary, "Secondary", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_secondary, label: "", class: "bg-secondary text-base-content", data: { action: "change->theme-editor#update", setting: :color_secondary } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_secondary_content, label: "S", class: "bg-secondary text-secondary-content", data: { action: "change->theme-editor#update", setting: :color_secondary_content } %>
+              </div>
+
+              <%= form.label :color_neutral, "Neutral", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_neutral, label: "", class: "bg-neutral text-base-content", data: { action: "change->theme-editor#update", setting: :color_neutral } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_neutral_content, label: "N", class: "bg-neutral text-neutral-content", data: { action: "change->theme-editor#update", setting: :color_neutral_content } %>
+              </div>
+            </div>
+
+            <div class="divider divider-horizontal"></div>
+
+            <div class="grid grid-cols-2 gap-2 mx-auto">
+              <%= form.label :color_info, "Info", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_info, label: "", class: "bg-info text-base-content", data: { action: "change->theme-editor#update", setting: :color_info } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_info_content, label: ":o", class: "bg-info text-info-content", data: { action: "change->theme-editor#update", setting: :color_info_content } %>
+              </div>
+
+              <%= form.label :color_warning, "Warning", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_warning, label: "", class: "bg-warning text-base-content", data: { action: "change->theme-editor#update", setting: :color_warning } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_warning_content, label: ":|", class: "bg-warning text-warning-content", data: { action: "change->theme-editor#update", setting: :color_warning_content } %>
+              </div>
+
+              <%= form.label :color_success, "Success", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_success, label: "", class: "bg-success text-base-content", data: { action: "change->theme-editor#update", setting: :color_success } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_success_content, label: ":)", class: "bg-success text-success-content", data: { action: "change->theme-editor#update", setting: :color_success_content } %>
+              </div>
+
+              <%= form.label :color_error, "Error", class: "col-span-2" %>
+              <div class="tooltip" data-tip="Background">
+                <%= form.oklch_field :color_error, label: "", class: "bg-error text-base-content", data: { action: "change->theme-editor#update", setting: :color_error } %>
+              </div>
+              <div class="tooltip" data-tip="Text">
+                <%= form.oklch_field :color_error_content, label: ":(", class: "bg-error text-error-content", data: { action: "change->theme-editor#update", setting: :color_error_content } %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider">Radius</div>
+
+        <div>
+          <%= form.label :radius_selector, "Selectors - checkbox, toggle, badge" %>
+          <div class="grid grid-cols-5 px-1 my-2 gap-2">
+            <% ThemesHelper::SELECTORS_RADIUSES.each do |value, appearance| %>
+              <div class="tooltip" data-tip="<%= value %>">
+                <div class="size-14 overflow-hidden bg-base-300 rounded-field m-auto">
+                  <%= form.radio_button :radius_selector, value, class: "radio border-4 -mx-8 my-5 size-18 before:invisible #{appearance}", data: { action: "change->theme-editor#update", setting: :radius_selector } %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :radius_field, "Fields - button, input, select, tab" %>
+          <div class="grid grid-cols-5 px-1 my-2 gap-2">
+            <% ThemesHelper::FIELDS_RADIUSES.each do |value, appearance| %>
+              <div class="tooltip" data-tip="<%= value %>">
+                <div class="size-14 overflow-hidden bg-base-300 rounded-field m-auto">
+                  <%= form.radio_button :radius_field, value, class: "radio border-4 -mx-8 my-5 size-18 before:invisible #{appearance}", data: { action: "change->theme-editor#update", setting: :radius_field } %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :radius_box, "Boxes - card, modal, alert" %>
+          <div class="grid grid-cols-5 px-1 my-2 gap-2">
+            <% ThemesHelper::BOX_RADIUSES.each do |value, appearance| %>
+              <div class="tooltip" data-tip="<%= value %>">
+                <div class="size-14 overflow-hidden bg-base-300 rounded-field m-auto">
+                  <%= form.radio_button :radius_box, value, class: "radio border-4 -mx-8 my-5 size-18 before:invisible #{appearance}", data: { action: "change->theme-editor#update", setting: :radius_box } %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="divider">Size</div>
+
+        <div>
+          <%= form.label :size_selector, "Selectors - checkbox, toggle, badge" %>
+          <div class="w-full">
+            <%= form.range_field :size_selector, min: 0.1875, max: 0.3125, step: 0.03125, class: "range w-full", data: { action: "input->theme-editor#update", setting: :size_selector } %>
+            <div class="flex px-1 my-2 text-xs">
+              <span class="flex-1">Compact</span>
+              <span class="flex-1 text-center">|</span>
+              <span class="flex-1 text-right">Cozy</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :size_field, "Fields - button, input, select, tab" %>
+          <div class="w-full">
+            <%= form.range_field :size_field, min: 0.1875, max: 0.3125, step: 0.03125, class: "range w-full", data: { action: "input->theme-editor#update", setting: :size_field } %>
+            <div class="flex px-1 my-2 text-xs">
+              <span class="flex-1">Compact</span>
+              <span class="flex-1 text-center">|</span>
+              <span class="flex-1 text-right">Cozy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider">Borders</div>
+
+        <div>
+          <%= form.label :border, "Width" %>
+          <div class="w-full">
+            <%= form.range_field :border, min: 0.5, max: 2.5, step: 0.5, class: "range w-full", data: { action: "input->theme-editor#update", setting: :border } %>
+            <div class="flex px-1 my-2 text-xs">
+              <span class="flex-1">Thin</span>
+              <span class="flex-1 text-center">|</span>
+              <span class="flex-1 text-right">Thick</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider">Effects</div>
+
+        <div>
+          <%= form.label :depth, class: "text-lg font-bold w-full" do %>
+            <%= form.check_box :depth, data: { action: "change->theme-editor#updateBoolean", setting: :depth } %>
+            Depth Effect
+          <% end %>
+          <span class="block text-base-content/48">3D depth on fields & selectors</span>
+        </div>
+
+        <div>
+          <%= form.label :noise, class: "text-lg font-bold w-full" do %>
+            <%= form.check_box :noise, data: { action: "change->theme-editor#updateBoolean", setting: :noise } %>
+            Noise Effect
+          <% end %>
+          <span class="block text-base-content/48">Noise pattern on fields & selectors</span>
+        </div>
+
+        <%= form.submit class: "btn btn-primary mt-4 w-full" %>
+        <% if theme.new_record? %>
+          <%= link_to "Back", themes_path, class: "btn btn-outline w-full" %>
+        <% else %>
+          <%= link_to "Back", themes_path(anchor: theme.token), class: "btn btn-outline w-full" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="bg-base-100 -mt-3 p-8 rounded-box w-full hidden lg:block">
+      <%= turbo_frame_tag :home, src: home_preview_path, loading: :lazy, data: { theme_editor_target: "preview" } do %>
+        <div class="w-full text-xl text-center skeleton-text animate-pulse">
+          Loading Preview
+        </div>
+      <% end %>
+    </div>
+  </div>
+</fieldset>

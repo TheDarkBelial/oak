@@ -5,6 +5,8 @@
   <%= render "settings/inputs/text", setting: Setting.find_by(slug: :date_format) %>
   <%= render "format_table", formatters: SettingsHelper::DATE_FORMATTERS %>
 
+  <div class="divider m-0"></div>
+
   <%= render "settings/inputs/toggle", setting: Setting.find_by(slug: :time_enabled) %>
   <%= render "settings/inputs/text", setting: Setting.find_by(slug: :time_format) %>
   <%= render "format_table", formatters: SettingsHelper::TIME_FORMATTERS %>
