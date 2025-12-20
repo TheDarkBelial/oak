@@ -6,7 +6,16 @@
     <div class="text-xs font-semibold opacity-60 text-base-content/48"><%= bookmark.url %></div>
   </div>
   <div class="flex flex-col sm:flex-row gap-4 my-auto">
-    <%= link_to "Edit", edit_bookmark_path(bookmark), class: "btn btn-soft hover:btn-primary" %>
-    <%= button_to "Destroy", bookmark, method: :delete, class: "btn btn-error btn-soft hover:btn-error", data: { turbo_confirm: "Are you sure?" } %>
+    <div class="tooltip" data-tip="Edit">
+      <%= link_to edit_bookmark_path(bookmark), class: "btn btn-soft hover:btn-primary" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
+    </div>
+
+    <div class="tooltip" data-tip="Delete">
+      <%= button_to bookmark, method: :delete, class: "btn btn-error btn-soft hover:btn-error", data: { turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
+    </div>
   </div>
 </li>
