@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "securerandom"
+
 class OklchPickerFormComponent < ViewComponent::Base
   BUTTON_CLASSES = %w[btn join-item w-full border border-base-content/20]
   TAILWIND_COLOR_VALUES = {
@@ -255,11 +257,18 @@ class OklchPickerFormComponent < ViewComponent::Base
     @options = options
   end
 
-  def button_classes
-    [ BUTTON_CLASSES, @options[:class] ].flatten.join(" ")
+  def id
+    @id ||= "picker_#{SecureRandom.hex(4)}"
   end
 
   def button_content
     @options[:label]
   end
+
+  def button_classes
+    [ BUTTON_CLASSES, @options[:class] ].flatten.join(" ")
+  end
+
+  def show_script = "#{id}.showModal()"
+  def close_script = "#{id}.close()"
 end

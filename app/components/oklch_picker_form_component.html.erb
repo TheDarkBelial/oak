@@ -1,24 +1,19 @@
-<div data-controller="modal">
-  <%= tag.div class: button_classes, data: { action: "click->modal#open" } do %>
-    <%= tag.div class: "cursor-pointer" do %>
-      <%= button_content %>
-    <% end %>
-  <% end %>
+<%= button_tag button_content, type: :button, class: button_classes, onclick: show_script %>
 
-  <dialog class="modal" data-theme="dark" data-modal-target="modal">
-    <div class="modal-box w-auto max-w-full p-0 bg-base-100/50 backdrop-blur">
-      <div class="grid grid-cols-22 gap-1 p-4">
-        <% TAILWIND_COLOR_VALUES.each do |color, value| %>
-          <%= @form.radio_button @method, value, class: "btn size-10 bg-#{color} outline-white checked:outline checked:border-base-100 checked:shadow-none hover:scale-150 hover:outline-none", data: @options[:data] %>
-        <% end %>
-      </div>
-      <div class="modal-action m-0 p-4 bg-base-100/20">
-        <%# Not only does this allow for resetting colors, but it also allows for cloning DaisyUI themes that do not use Tailwind color steps. %>
-        <div class="mr-auto tooltip tooltip-right" data-tip="Reset">
-          <%= @form.radio_button @method, @value, class: "btn size-10 checked:outline-none checked:border-base-100 checked:shadow-none hover:scale-110", style: "background-color: #{@value}", data: @options[:data] %>
-        </div>
-        <button type="button" class="btn" data-action="click->modal#close">Close</button>
-      </div>
+<%= tag.dialog id:, class: "modal", data: { theme: "dark" } do %>
+  <div class="modal-box w-auto max-w-full p-0 bg-base-100/50 backdrop-blur">
+    <div class="grid grid-cols-22 gap-1 p-4">
+      <% TAILWIND_COLOR_VALUES.each do |color, value| %>
+        <%= @form.radio_button @method, value, class: "btn size-10 bg-#{color} outline-white checked:outline checked:border-base-100 checked:shadow-none hover:scale-150 hover:outline-none", data: @options[:data] %>
+      <% end %>
     </div>
-  </dialog>
-</div>
+    <div class="modal-action m-0 p-4 bg-base-100/20">
+      <%# Not only does this allow for resetting colors, but it also allows for cloning DaisyUI themes that do not use Tailwind color steps. %>
+      <div class="mr-auto tooltip tooltip-right" data-tip="Reset">
+        <%= @form.radio_button @method, @value, class: "btn size-10 checked:outline-none checked:border-base-100 checked:shadow-none hover:scale-110", style: "background-color: #{@value}", data: @options[:data] %>
+      </div>
+      <%= button_tag "Close", type: :button, class: "btn", onclick: close_script %>
+    </div>
+  </div>
+  <%= tag.div class: "modal-backdrop", onclick: close_script %>
+<% end %>
