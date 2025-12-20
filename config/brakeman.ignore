@@ -1,0 +1,38 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "81019e085849a00d5aff37a2f387355feba55089002da2ea41d07db2852a8148",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/home/_bookmark.html.erb",
+      "line": 5,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.name, (Unresolved Model).new.url, :target => :blank)",
+      "render_path": [
+        {
+          "type": "template",
+          "name": "home/_category",
+          "line": 8,
+          "file": "app/views/home/_category.html.erb",
+          "rendered": {
+            "name": "home/_bookmark",
+            "file": "app/views/home/_bookmark.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "home/_bookmark"
+      },
+      "user_input": "(Unresolved Model).new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Intentional feature of the application."
+    }
+  ],
+  "brakeman_version": "7.1.1"
+}
