@@ -4,7 +4,7 @@
   <div class="modal-box w-auto max-w-full p-0 bg-base-100/50 backdrop-blur">
     <div class="grid grid-cols-22 gap-1 p-4">
       <% TAILWIND_COLOR_VALUES.each do |color, value| %>
-        <%= @form.radio_button @method, value, class: "btn size-10 bg-#{color} outline-white checked:outline checked:border-base-100 checked:shadow-none hover:scale-150 hover:outline-none", data: @options[:data] %>
+        <%= @form.radio_button @method, value, class: "btn p-0 size-5 sm:size-7 md:size-8 lg:size-10 bg-#{color} outline-white checked:outline checked:border-base-100 checked:shadow-none hover:scale-150 hover:outline-none", data: @options[:data] %>
       <% end %>
     </div>
     <div class="modal-action m-0 p-4 bg-base-100/20">
