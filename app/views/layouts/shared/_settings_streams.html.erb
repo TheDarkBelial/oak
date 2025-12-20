@@ -1,0 +1,8 @@
+<% if controller_name == 'settings' %>
+  <%= turbo_stream_from Setting.find_by(slug: "theme") %>
+<% else %>
+  <%= turbo_stream_from :settings %>
+  <% Setting.find_each do |setting| %>
+    <%= turbo_stream_from setting %>
+  <% end %>
+<% end %>

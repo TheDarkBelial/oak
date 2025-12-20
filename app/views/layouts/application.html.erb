@@ -29,6 +29,7 @@
   </head>
 
   <body class="max-w-7xl mx-auto" data-controller="theme" data-theme-token-value="<%= Current.theme.token %>">
+    <%= render "layouts/shared/settings_streams" %>
     <%= render "layouts/shared/header" %>
     <main class="container mx-auto my-18 px-5 flex">
       <%= yield %>
