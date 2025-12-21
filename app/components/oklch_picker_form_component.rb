@@ -3,7 +3,7 @@
 require "securerandom"
 
 class OklchPickerFormComponent < ViewComponent::Base
-  BUTTON_CLASSES = %w[btn join-item w-full border border-base-content/20]
+  BUTTON_CLASSES = %w[btn w-full border border-base-content/20]
   TAILWIND_COLOR_VALUES = {
     "slate-50" => "oklch(0.984 0.003 247.858)",
     "gray-50" => "oklch(0.985 0.002 247.839)",
