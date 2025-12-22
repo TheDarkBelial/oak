@@ -254,6 +254,7 @@ GEM
       dry-validation (~> 1.0, >= 1.0.0)
       faraday (~> 2.0, >= 2.0.0)
       faraday-retry (~> 2.0, >= 2.0.0)
+    openssl (4.0.0)
     ostruct (0.6.3)
     pagy (43.2.2)
       json
@@ -471,6 +472,7 @@ DEPENDENCIES
   jbuilder
   kamal
   open-meteo
+  openssl (~> 4.0)
   pagy (~> 43.2)
   propshaft
   puma (>= 5.0)

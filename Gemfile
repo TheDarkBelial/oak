@@ -89,6 +89,8 @@ group :development do
   # Better error page for development [https://github.com/BetterErrors/better_errors]
   gem "better_errors"
   gem "binding_of_caller"
+
+  gem "openssl", "~> 4.0"
 end
 
 group :test do
