@@ -10,6 +10,11 @@
 
 @plugin "./daisyui.mjs";
 
+@utility noise {
+  background-size: auto,calc(var(--noise)*100%);
+  background-image: none,var(--fx-noise);
+}
+
 /* Makes the Turbo progress bar match the current theme. */
 .turbo-progress-bar {
   @apply bg-primary;
