@@ -4,7 +4,16 @@ class Icon < ApplicationRecord
   identifies_by :slug
   broadcasts_refreshes
 
+  has_many :applications, dependent: :destroy
   has_many :icon_variants, dependent: :destroy
 
   validates :slug, :name, presence: true
+
+  def best_variant
+    @best_variant ||= icon_variants.order(:format, :theme).first
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name]
+  end
 end

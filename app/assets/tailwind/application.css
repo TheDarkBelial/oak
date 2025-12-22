@@ -24,3 +24,21 @@ turbo-frame[busy] {
 [id]:target {
   @apply scroll-mt-16;
 }
+
+/* Makes Pagy pagination match the current theme. */
+.pagy {
+    @apply join;
+
+    a {
+      @apply join-item btn;
+    }
+
+    a[aria-current] {
+      @apply btn-active;
+    }
+
+    a[role="separator"],
+    a[role="link"]:not([aria-current]) {
+      @apply btn-disabled;
+    }
+  }

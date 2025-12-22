@@ -3,11 +3,11 @@ require "rmagick"
 module IconsHelper
   include ActionView::Helpers::AssetUrlHelper
 
-  def icon_tag(icon_variant, **opts)
-    path = icon_path(icon_variant.slug, format: icon_variant.format)
+  def icon_tag(icon, **opts)
+    path = icon_path(icon.best_variant.slug, format: icon.best_variant.format)
 
-    if icon_variant.svg?
-      inline_svg_tag(icon_variant, **opts)
+    if icon.best_variant.svg?
+      inline_svg_tag(icon.best_variant, **opts)
     else
       image_tag("#{path}?theme=#{Current.theme.token}", **opts)
     end

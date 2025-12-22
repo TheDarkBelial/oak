@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[8.0].define(version: 2025_09_06_172646) do
   create_table "applications", force: :cascade do |t|
-    t.integer "icon_variant_id", null: false
+    t.integer "icon_id", null: false
     t.string "token", null: false
     t.string "name", null: false
     t.string "description"
@@ -20,7 +20,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_06_172646) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["icon_variant_id"], name: "index_applications_on_icon_variant_id"
+    t.index ["icon_id"], name: "index_applications_on_icon_id"
     t.index ["position"], name: "index_applications_on_position"
     t.index ["token"], name: "index_applications_on_token", unique: true
   end
@@ -130,7 +130,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_06_172646) do
     t.index ["token"], name: "index_themes_on_token", unique: true
   end
 
-  add_foreign_key "applications", "icon_variants"
+  add_foreign_key "applications", "icons"
   add_foreign_key "bookmarks", "categories"
   add_foreign_key "icon_variants", "icons"
 end

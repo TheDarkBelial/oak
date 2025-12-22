@@ -1,6 +1,12 @@
 class IconsController < ApplicationController
   include IconsHelper
 
+  def index
+    @q = Icon.ransack(params[:q])
+    @q.sorts = "name asc" if @q.sorts.empty?
+    @pagy, @icons = pagy(:offset, @q.result, **pagy_options)
+  end
+
   def show
     respond_to do |format|
       format.svg do
@@ -22,10 +28,9 @@ class IconsController < ApplicationController
   end
 
   def icon_variant
-    @icon ||= IconVariant.joins(:icon).where(
+    @icon_variant ||= IconVariant.joins(:icon).where(
       icon: { slug: params.expect(:slug) },
-      format: params.expect(:format),
-      theme: %i[light dark default]
-    ).order(theme: :desc).first!
+      format: params.expect(:format)
+    ).order(:theme).first!
   end
 end

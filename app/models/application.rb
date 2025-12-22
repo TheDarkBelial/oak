@@ -8,8 +8,7 @@ class Application < ApplicationRecord
 
   broadcasts_refreshes
 
-  belongs_to :icon_variant
-  has_one :icon, through: :icon_variant
+  belongs_to :icon
 
-  validates :token, :name, :url, presence: true
+  validates :icon, :token, :name, :url, presence: true
 end

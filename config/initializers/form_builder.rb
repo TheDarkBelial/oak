@@ -17,32 +17,36 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def text_field(method, options = {})
-    options[:class] = merge_html_classes(options[:class], "input input-bordered")
+    options[:class] = merge_html_classes(options[:class], "input")
     super
   end
 
   def url_field(method, options = {})
-    options[:class] = merge_html_classes(options[:class], "input input-bordered")
+    options[:class] = merge_html_classes(options[:class], "input")
     super
   end
 
   def text_area(method, options = {})
-    options[:class] = merge_html_classes(options[:class], "textarea textarea-bordered")
+    options[:class] = merge_html_classes(options[:class], "textarea")
     super
   end
 
   def select(method, choices = nil, options = {}, html_options = {}, &)
-    html_options[:class] = merge_html_classes(html_options[:class], "select select-bordered")
+    html_options[:class] = merge_html_classes(html_options[:class], "select")
     super
   end
 
   def collection_select(method, collection, value_method, text_method, options = {}, html_options = {}, &)
-    html_options[:class] = merge_html_classes(html_options[:class], "select select-bordered")
+    html_options[:class] = merge_html_classes(html_options[:class], "select")
     super
   end
 
   def oklch_field(method, options = {})
     render_view_component(OklchPickerFormComponent.new(self, @object, method, options))
+  end
+
+  def icon_field(method, options = {})
+    render_view_component(IconPickerFormComponent.new(self, @object, method, options))
   end
 
   private
@@ -67,4 +71,4 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
 end
 
 ActionView::Base.default_form_builder = DaisyFormBuilder
-ENV["RANSACKS_FORM_BUILDER"] = ActionView::Base.default_form_builder.name if defined?(Ransack)
+ENV["RANSACK_FORM_BUILDER"] = ActionView::Base.default_form_builder.name if defined?(Ransack)

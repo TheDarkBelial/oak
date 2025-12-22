@@ -2,7 +2,6 @@ class IconVariant < ApplicationRecord
   broadcasts_refreshes
 
   belongs_to :icon
-  has_many :applications, dependent: :destroy
 
   enum :format, {
     svg: 0,

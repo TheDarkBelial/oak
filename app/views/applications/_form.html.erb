@@ -21,10 +21,13 @@
     <%= form.label :url %>
     <%= form.url_field :url, required: true, class: "w-full validator" %>
 
-    <%= form.label :icon_variant_id %>
-    <%= form.collection_select :icon_variant_id, IconVariant.svg.includes(:icon), :id, :name, { required: true }, class: "w-full validator" %>
+    <div class="divider"></div>
 
-    <%= form.submit class: "btn btn-primary mt-4" %>
+    <%= form.icon_field :icon_id, required: true %>
+
+    <div class="divider"></div>
+
+    <%= form.submit class: "btn btn-primary" %>
     <% if application.new_record? %>
       <%= link_to "Back", applications_path, class: "btn btn-outline" %>
     <% else %>

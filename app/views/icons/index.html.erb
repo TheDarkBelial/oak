@@ -1,0 +1,21 @@
+<% content_for :title, "Icons" %>
+
+<%= turbo_frame_tag :icons, class: "w-full" do %>
+  <%= search_form_for @q, class: "w-full p-4", data: { controller: "debounce", turbo: true, turbo_permanent: true } do |f| %>
+    <%= f.search_field :name_cont, class: "input w-full", data: { action: "keydown->debounce#submit" } %>
+  <% end %>
+
+  <table class="table table-xs">
+    <% if @icons.any? %>
+      <tbody>
+        <%= render @icons %>
+      </tbody>
+    <% else %>
+      <tfoot>No icons found.</tfoot>
+    <% end %>
+  </table>
+
+  <div class="mt-2 p-2 w-full text-center">
+    <%== @pagy.series_nav slots: 3, anchor_string: 'data-turbo="true"' %>
+  </div>
+<% end %>
