@@ -1,4 +1,6 @@
-# Oak
+<img src="docs/assets/logo.svg" height="80px">
+
+---
 
 A simple homepage for self-hosters.
 
@@ -33,6 +35,14 @@ This application uses SQLite for storage. You must mount your desired database s
 
 ```
 docker run -d -it -p 3000:80 -v /path/on/host:/rails/storage ghcr.io/bert-mccutchen/oak:latest
+```
+
+### Unraid
+
+You need to change your storage directory ownership for Oak.
+
+```
+chown 1000:1000 /mnt/cache/appdata/oak
 ```
 
 ## Screenshots
