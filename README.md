@@ -1,7 +1,5 @@
 <img src="docs/assets/logo.svg" height="80px">
 
----
-
 A simple homepage for self-hosters.
 
 _100% opinionated — based on [Flame](https://github.com/pawelmalak/flame) and [SUI](https://github.com/jeroenpardon/sui). Fork or make your own if you want something different._
