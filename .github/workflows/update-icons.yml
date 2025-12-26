@@ -1,0 +1,36 @@
+name: Update Icons
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Runs every day at 00:00 UTC
+    - cron: '0 0 * * *'
+
+env:
+  GIT_EMAIL: bot@bertm.dev
+  GIT_NAME: Bert Bot
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+
+      - name: Update Submodule (selfh.st/icons)
+        uses: bin/submodule
+
+      - name: Configure Git
+        run: |
+          git config --global user.email ${{ env.GIT_EMAIL }}
+          git config --global user.name ${{ env.GIT_NAME }}
+
+      - name: Push Changes
+        run: |
+          git add .
+          git commit -m "chore: updated selfh.st/icons submodule"
+          git push
