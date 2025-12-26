@@ -6,7 +6,7 @@ class IconHash < Hash
   end
 
   def slug
-    self[:slug]
+    self[:reference]
   end
 
   def record_attributes
