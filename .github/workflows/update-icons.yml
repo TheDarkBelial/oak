@@ -22,7 +22,7 @@ jobs:
           submodules: "recursive"
 
       - name: Update Submodule (selfh.st/icons)
-        uses: bin/submodule
+        run: bin/submodule
 
       - name: Configure Git
         run: |
