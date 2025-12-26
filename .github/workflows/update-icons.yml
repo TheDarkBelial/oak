@@ -26,4 +26,4 @@ jobs:
           git config user.name berts-icon-bot[bot]
           git add .
           git commit -m "chore: updated selfh.st/icons submodule"
-          git push
+          git push --force
