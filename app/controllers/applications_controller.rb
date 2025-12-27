@@ -20,7 +20,7 @@ class ApplicationsController < ApplicationController
     @application = Application.new(application_params)
 
     if @application.save
-      redirect_to @application, notice: "Application created."
+      redirect_to @application, success: "Application created."
     else
       render :new, status: :unprocessable_content
     end
@@ -28,7 +28,7 @@ class ApplicationsController < ApplicationController
 
   def update
     if @application.update(application_params)
-      redirect_to @application, notice: "Application updated.", status: :see_other
+      redirect_to @application, success: "Application updated.", status: :see_other
     else
       Rails.logger.error(@application.errors.full_messages)
       render :edit, status: :unprocessable_content
@@ -38,7 +38,7 @@ class ApplicationsController < ApplicationController
   def destroy
     @application.destroy!
 
-    redirect_back fallback_location: applications_path, notice: "Application destroyed.", status: :see_other
+    redirect_back fallback_location: applications_path, warning: "Application destroyed.", status: :see_other
   end
 
   private

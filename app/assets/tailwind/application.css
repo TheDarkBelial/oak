@@ -12,8 +12,34 @@
 
 /* Adds a utility class to use DaisyUI's noise anywhere. */
 @utility noise {
-  background-size: auto,calc(var(--noise)*100%);
-  background-image: none,var(--fx-noise);
+  background-size: auto, calc(var(--noise) * 100%);
+  background-image: none, var(--fx-noise);
+}
+
+@layer components {
+  .notice {
+    @apply alert mt-2 bg-base-100/20 text-base-content shadow-md backdrop-blur-xl transition-all duration-750 ease-in-out;
+  }
+
+  .notice-minimized {
+    @apply text-[0em] border-0 m-0 mt-0 p-0 h-0;
+  }
+
+  .notice-error {
+    @apply alert-error;
+  }
+
+  .notice-warning {
+    @apply alert-warning;
+  }
+
+  .notice-success {
+    @apply alert-success;
+  }
+
+  .notice-info {
+    @apply alert-info;
+  }
 }
 
 /* Makes anchor links clear the header. */
@@ -33,18 +59,18 @@ turbo-frame[busy] {
 
 /* Makes Pagy pagination match the current theme. */
 .pagy {
-    @apply join;
+  @apply join;
 
-    a {
-      @apply join-item btn;
-    }
-
-    a[aria-current] {
-      @apply btn-active;
-    }
-
-    a[role="separator"],
-    a[role="link"]:not([aria-current]) {
-      @apply btn-disabled;
-    }
+  a {
+    @apply join-item btn;
   }
+
+  a[aria-current] {
+    @apply btn-active;
+  }
+
+  a[role="separator"],
+  a[role="link"]:not([aria-current]) {
+    @apply btn-disabled;
+  }
+}

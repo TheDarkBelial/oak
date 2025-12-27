@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
 
   def update
     if @setting.update(setting_params)
-      redirect_back fallback_location: root_path, status: :see_other
+      redirect_back fallback_location: root_path, success: "Setting updated.", status: :see_other
     else
       Rails.logger.error(@setting.errors.full_messages)
       render :index, status: :unprocessable_content

@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to @category, notice: "Category created."
+      redirect_to @category, success: "Category created."
     else
       render :new, status: :unprocessable_content
     end
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: "Category updated.", status: :see_other
+      redirect_to @category, success: "Category updated.", status: :see_other
     else
       Rails.logger.error(@category.errors.full_messages)
       render :edit, status: :unprocessable_content
@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy!
 
-    redirect_back fallback_location: categories_path, notice: "Category destroyed.", status: :see_other
+    redirect_back fallback_location: categories_path, warning: "Category destroyed.", status: :see_other
   end
 
   private

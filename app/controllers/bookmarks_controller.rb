@@ -20,7 +20,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
 
     if @bookmark.save
-      redirect_to @bookmark, notice: "Bookmark created."
+      redirect_to @bookmark, success: "Bookmark created."
     else
       render :new, status: :unprocessable_content
     end
@@ -28,7 +28,7 @@ class BookmarksController < ApplicationController
 
   def update
     if @bookmark.update(bookmark_params)
-      redirect_to @bookmark, notice: "Bookmark updated.", status: :see_other
+      redirect_to @bookmark, success: "Bookmark updated.", status: :see_other
     else
       Rails.logger.error(@bookmark.errors.full_messages)
       render :edit, status: :unprocessable_content
@@ -38,7 +38,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark.destroy!
 
-    redirect_back fallback_location: bookmarks_path, notice: "Bookmark destroyed.", status: :see_other
+    redirect_back fallback_location: bookmarks_path, warning: "Bookmark destroyed.", status: :see_other
   end
 
   private

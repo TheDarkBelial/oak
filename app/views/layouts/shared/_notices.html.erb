@@ -1,0 +1,7 @@
+<div class="toast">
+  <div class="flex flex-col">
+    <% flash.each_with_index do |(type, message), i| -%>
+      <%= notice_tag(type, message, duration: (flash.count - i) * 4000) %>
+    <%- end -%>
+  </div>
+</div>

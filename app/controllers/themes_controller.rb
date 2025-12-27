@@ -22,7 +22,7 @@ class ThemesController < ApplicationController
     @theme = Theme.new(theme_params)
 
     if @theme.save
-      redirect_to @theme, notice: "Theme created."
+      redirect_to @theme, success: "Theme created."
     else
       render :new, status: :unprocessable_content
     end
@@ -30,7 +30,7 @@ class ThemesController < ApplicationController
 
   def update
     if @theme.update(theme_params)
-      redirect_to @theme, notice: "Theme updated.", status: :see_other
+      redirect_to @theme, success: "Theme updated.", status: :see_other
     else
       Rails.logger.error(@theme.errors.full_messages)
       render :edit, status: :unprocessable_content
@@ -40,7 +40,7 @@ class ThemesController < ApplicationController
   def destroy
     @theme.destroy!
 
-    redirect_back fallback_location: themes_path, notice: "Theme destroyed.", status: :see_other
+    redirect_back fallback_location: themes_path, warning: "Theme destroyed.", status: :see_other
   end
 
   private

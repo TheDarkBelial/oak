@@ -20,7 +20,7 @@ class QuotesController < ApplicationController
     @quote = Quote.new(quote_params)
 
     if @quote.save
-      redirect_to @quote, notice: "Quote created."
+      redirect_to @quote, success: "Quote created."
     else
       render :new, status: :unprocessable_content
     end
@@ -28,7 +28,7 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update(quote_params)
-      redirect_to @quote, notice: "Quote updated.", status: :see_other
+      redirect_to @quote, success: "Quote updated.", status: :see_other
     else
       Rails.logger.error(@quote.errors.full_messages)
       render :edit, status: :unprocessable_content
@@ -38,13 +38,13 @@ class QuotesController < ApplicationController
   def destroy
     @quote.destroy!
 
-    redirect_back fallback_location: quotes_path, notice: "Quote destroyed.", status: :see_other
+    redirect_back fallback_location: quotes_path, warning: "Quote destroyed.", status: :see_other
   end
 
   def reroll_daily
     Rails.cache.delete("quote/daily_pick")
 
-    redirect_back fallback_location: quotes_path, notice: "Daily pick rerolled!", status: :see_other
+    redirect_back fallback_location: quotes_path, info: "Daily pick rerolled!", status: :see_other
   end
 
   private
