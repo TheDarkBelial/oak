@@ -9,7 +9,7 @@ QUOTES = [
   { quote: "Children have never been very good at listening to their elders, but they have never failed to imitate them.", author: "James Baldwin" },
   { quote: "Education is a progressive discovery of our own ignorance.", author: "Will Durant" },
   { quote: "The difference between school and life? In school, you're taught a lesson and then given a test. In life, you're given a test that teaches you a lesson.", author: "Tom Bodett" },
-  { quote: "Tell me and I'll forget; show me and I may remember; involve me and I'll understand.", author: "Chinese proverb" },
+  { quote: "Tell me and I'll forget; show me and I may remember; involve me and I'll understand.", author: "Chinese Proverb" },
   { quote: "If someone is going down the wrong road, he doesn't need motivation to speed him up. What he needs is education to turn him around.", author: "Jim Rohn" },
   { quote: "People learn something every day, and a lot of times it's that what they learned the day before was wrong.", author: "Bill Vaughan" },
   { quote: "Education cost money, but then so does ignorance.", author: "Claus Moser" },
