@@ -178,8 +178,8 @@ chown 1000:1000 /mnt/cache/appdata/oak
 
 | | | | |
 |---|---|---|---|
-| ![Applications Page](docs/assets/mobile_applications.png) | ![Bookmarks Page](docs/assets/mobile_bookmarks.png) | ![Categories Page](docs/assets/mobile_categories.png) | ![Settings Page](docs/assets/mobile_settings.png) |
-| ![Quotes Page](docs/assets/mobile_quotes.png) | ![Themes Page](docs/assets/mobile_themes.png) | ![New Theme Page](docs/assets/mobile_new_theme.png) |
+| ![Forest Homepage](docs/assets/themes/mobile_forest.png) | ![Applications Page](docs/assets/mobile_applications.png) | ![Bookmarks Page](docs/assets/mobile_bookmarks.png) | ![Categories Page](docs/assets/mobile_categories.png) |
+| ![Settings Page](docs/assets/mobile_settings.png) | ![Quotes Page](docs/assets/mobile_quotes.png) | ![Themes Page](docs/assets/mobile_themes.png) | ![New Theme Page](docs/assets/mobile_new_theme.png) |
 
 <details>
 <summary><b>Standard Themes (Mobile)</b></summary>
