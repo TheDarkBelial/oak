@@ -10,6 +10,9 @@ fi
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
 
+  # Clear out any cached data to prevent issues upgrading
+  ./bin/rails r "Rails.cache.clear"
+
   # Re-seed the icons (upsert)
   ./bin/rails r db/seeds/icons.rb
 fi
