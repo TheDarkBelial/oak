@@ -11,16 +11,16 @@ class Current < ActiveSupport::CurrentAttributes
   private_class_method :defaulted_theme
 
   def self.timed_greeting
-    Time.use_zone(Setting["time_zone"]) do
+    Time.use_zone(Setting[:time_zone]) do
       case Time.current.hour
       when 5..11
-        Setting["morning_greeting"]
+        Setting[:morning_greeting]
       when 12..16
-        Setting["afternoon_greeting"]
+        Setting[:afternoon_greeting]
       when 17..20
-        Setting["evening_greeting"]
+        Setting[:evening_greeting]
       else
-        Setting["night_greeting"]
+        Setting[:night_greeting]
       end
     end
   end
