@@ -7,7 +7,7 @@ module ErrorsHelper
   end
 
   def error_message(status:)
-    # Rails doesn't support the best status code by default!
+    # Rack doesn't support the best status code by default!
     return "I'm a teapot" if status == 418
 
     Rack::Utils::HTTP_STATUS_CODES[status]

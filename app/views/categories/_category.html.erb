@@ -2,7 +2,7 @@
   <div class="flex cursor-grab">
     <i class="fa-solid fa-grip-vertical my-auto"></i>
   </div>
-  <div class="text-4xl font-ubuntu font-light opacity-30 tabular-nums my-auto"><%= category.position.to_s.rjust(2, '0') %></div>
+  <div class="text-4xl font-ubuntu font-light opacity-30 tabular-nums my-auto counter"></div>
   <div class="list-col-grow my-auto">
     <%= turbo_stream_from category %>
     <div><%= category.name %></div>

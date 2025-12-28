@@ -40,6 +40,18 @@
   .notice-info {
     @apply alert-info;
   }
+
+  ul:has(.counter) {
+    counter-reset: list;
+  }
+
+  .counter {
+    counter-increment: list;
+  }
+
+  .counter::before {
+    content: counter(list, decimal-leading-zero) " ";
+  }
 }
 
 /* Makes anchor links clear the header. */
