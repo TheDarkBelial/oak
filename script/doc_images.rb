@@ -18,7 +18,8 @@ def file_path(dir, name)
   dir_path = Rails.root.join("docs/#{dir}")
   FileUtils.mkdir_p(dir_path)
 
-  "#{dir_path}/#{PREFIX}_#{name}.png"
+  file_name = [ PREFIX, name ].compact_blank.join('_')
+  "#{dir_path}/#{file_name}.png"
 end
 
 def screenshot(page, url:, path:)
