@@ -15,7 +15,7 @@ _100% opinionated — based on [Flame](https://github.com/pawelmalak/flame) and 
   - Organize them with categories.
 - Greetings for good vibes. (optional)
 - Daily quotes for extra wisdom. (optional)
-- Local temperature. (optional)
+- Local weather conditions. (optional)
 - Completely customizable.
 - 100% mobile friendly.
 
