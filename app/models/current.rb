@@ -3,6 +3,12 @@ class Current < ActiveSupport::CurrentAttributes
   attribute :greeting, default: -> { timed_greeting }
   attribute :quote, default: -> { Quote.daily_pick }
 
+  def self.daytime?
+    Time.use_zone(Setting[:time_zone]) do
+      Time.current.hour.in?(5..16)
+    end
+  end
+
   private
 
   def self.defaulted_theme
