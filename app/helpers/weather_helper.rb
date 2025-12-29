@@ -8,6 +8,8 @@ module WeatherHelper
   end
 
   def weather_icon_tag(**opts)
+    return unless Setting[:weather_enabled]
+
     content_tag(:span, **opts.reverse_merge(class: "tooltip tooltip-bottom", data: { tip: weather_icon_title })) do
       tag.i(class: "fa-solid fa-#{weather_icon}")
     end
