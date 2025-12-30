@@ -3,7 +3,7 @@ module ErrorsHelper
     Rails.logger.error(error.full_message)
     raise if Rails.env.development?
 
-    redirect_to error_path(status)
+    redirect_to error_path(status), status:
   end
 
   def error_message(status:)
