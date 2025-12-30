@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     handle_error(error, status: 500)
   end
 
+  rescue_from ActionController::ParameterMissing do |error|
+    handle_error(error, status: 400)
+  end
+
   rescue_from ActiveRecord::RecordNotFound do |error|
     handle_error(error, status: 404)
   end

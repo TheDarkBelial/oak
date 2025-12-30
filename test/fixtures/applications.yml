@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+unifi:
+  token: "unifi"
+  icon: "unifi"
+  name: "UniFi OS"
+  url: "https://unifi/login"
+
+unraid:
+  token: "unraid"
+  icon: "unraid"
+  name: "Unraid"
+  url: "https://unraid.local"

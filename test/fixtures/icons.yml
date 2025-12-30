@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+unifi:
+  slug: "ubiquiti-unifi"
+  name: "UniFi OS"
+
+unraid:
+  slug: "unraid"
+  name: "Unraid"
+
+dokploy:
+  slug: "dokploy"
+  name: "Dokploy"

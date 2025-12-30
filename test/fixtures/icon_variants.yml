@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+unifi_svg:
+  icon: "unifi"
+  format: "svg"
+  theme: "light"
+
+unifi_png_default:
+  icon: "unifi"
+  format: "png"
+  theme: "default"
+
+unifi_png_light:
+  icon: "unifi"
+  format: "png"
+  theme: "light"
+
+unifi_png_dark:
+  icon: "unifi"
+  format: "png"
+  theme: "dark"
+
+unraid_svg:
+  icon: "unraid"
+  format: "svg"
+  theme: "light"
+
+unraid_png_default:
+  icon: "unraid"
+  format: "png"
+  theme: "default"
+
+unraid_png_light:
+  icon: "unraid"
+  format: "png"
+  theme: "light"
+
+unraid_png_dark:
+  icon: "unraid"
+  format: "png"
+  theme: "dark"
