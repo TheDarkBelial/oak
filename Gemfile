@@ -100,4 +100,5 @@ group :test do
   gem "capybara"
   gem "cuprite"
   gem "webmock"
+  gem "simplecov"
 end
