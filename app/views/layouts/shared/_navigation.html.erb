@@ -4,7 +4,7 @@
   <% end %>
   <ul id="navigation_dropdown" tabindex="-1" class="menu dropdown-content backdrop-blur-xl rounded-box shadow-2xl border border-neutral">
     <% unless controller_name == "home" %>
-      <li class="first:font-bold"><%= link_to "Home", home_path %></li>
+      <li class="first:font-bold"><%= link_to "Home", root_path %></li>
     <% end %>
     <% unless controller_name == "settings" %>
       <li class="first:font-bold"><%= link_to "Settings", settings_path %></li>
