@@ -28,6 +28,7 @@ module IconsHelper
     Rails.cache.fetch(icon_variant, expires_in: 12.hours) do
       File.read(icon_asset_path(icon_variant))
           .gsub(/fill:(\s+)?#[0-9A-Fa-f]+/i, "fill:var(--color-primary)")
+          .gsub(/stroke:(\s+)?#[0-9A-Fa-f]+/i, "stroke:var(--color-primary)")
           .gsub(/stop-color:(\s+)?#[0-9A-Fa-f]+/i, "stop-color:var(--color-primary)")
     end
   end

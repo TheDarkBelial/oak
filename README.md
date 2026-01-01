@@ -227,4 +227,4 @@ Big thanks to [DaisyUI](https://github.com/saadeghi/daisyui) for the component l
 
 ### Legal Attributions
 
-Icons are modified and colored programatically to match the user's theme. Icons are provided by [selfh.st/icons](https://github.com/selfhst/icons/blob/main/LICENSE), and [Font Awesome Free](https://fontawesome.com/license/free) under CC BY 4.0.
+Icons are modified and colored programatically to match the user's theme. Icons are provided by [selfh.st/icons](https://github.com/selfhst/icons/blob/main/LICENSE), and [Font Awesome Free](https://fontawesome.com/license/free) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed).
