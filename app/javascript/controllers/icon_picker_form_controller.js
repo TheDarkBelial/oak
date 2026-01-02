@@ -12,7 +12,8 @@ export default class IconPickerFormController extends Controller {
   }
 
   select(event) {
-    let icon = event.currentTarget.querySelector(".icon")
+    const icon = event.currentTarget.querySelector(".icon")
+
     this.inputTarget.value = event.currentTarget.dataset.id
     this.previewTarget.innerHTML = icon.innerHTML
     this.modalTarget.close()

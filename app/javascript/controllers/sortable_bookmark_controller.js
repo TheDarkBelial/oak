@@ -27,8 +27,6 @@ export default class SortableBookmarkController extends Controller {
     data.append("bookmark[position]", newIndex + 1)
     data.append("bookmark[category_id]", to.dataset.id)
 
-    console.log(item.dataset.url)
-    console.log(data)
     return await patch(item.dataset.url, { body: data, responseKind: "html" })
   }
 }
