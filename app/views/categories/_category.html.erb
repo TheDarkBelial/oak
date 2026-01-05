@@ -15,7 +15,7 @@
     </div>
 
     <div class="tooltip" data-tip="Delete">
-      <%= button_to category, method: :delete, class: "btn btn-error btn-soft hover:btn-error", data: { turbo_confirm: "Are you sure?" } do %>
+      <%= button_to category, method: :delete, class: "btn btn-error btn-soft hover:btn-error", data: { turbo_confirm: "Confirm deletion of #{category.name}.", confirm_button: "Delete" } do %>
         <i class="fa-solid fa-trash"></i>
       <% end %>
     </div>

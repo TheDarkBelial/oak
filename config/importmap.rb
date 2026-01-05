@@ -10,3 +10,4 @@ pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.12
 pin "sortablejs" # @1.15.6
 pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-free@7.0.1/js/all.js" # @7.0.1
 pin "strftime" # @0.10.3
+pin "@rolemodel/turbo-confirm", to: "@rolemodel--turbo-confirm.js" # @2.2.0
