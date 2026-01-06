@@ -9,7 +9,7 @@
   <div class="flex flex-col sm:flex-row gap-4 my-auto">
     <%= form_with(model: theme, class: "my-auto") do |form| %>
       <div class="tooltip" data-tip="Enabled">
-        <%= form.check_box :enabled, class: "toggle-lg", onchange: "this.form.submit()" %>
+        <%= form.check_box :enabled, class: "toggle-lg", onchange: "this.form.requestSubmit()" %>
       </div>
     <% end %>
     <% if theme.custom? %>
