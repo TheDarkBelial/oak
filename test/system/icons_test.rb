@@ -8,7 +8,7 @@ class IconsTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit icons_url
 
-    assert find("#q_name_cont").visible?
+    assert find("#q_name_or_tags_cont").visible?
   end
 
   test "paging icons" do
@@ -31,12 +31,12 @@ class IconsTest < ApplicationSystemTestCase
     assert_text "1Password"
     assert_no_text "Unraid"
 
-    fill_in("q_name_cont", with: "unr")
+    fill_in("q_name_or_tags_cont", with: "unr")
 
     assert_text "Unraid"
     assert_no_text "1Password"
 
-    fill_in("q_name_cont", with: " ")
+    fill_in("q_name_or_tags_cont", with: " ")
 
     assert_text "1Password"
     assert_no_text "Unraid"
