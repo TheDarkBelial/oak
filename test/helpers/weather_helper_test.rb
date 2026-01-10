@@ -22,16 +22,18 @@ class WeatherHelperTest < ActionView::TestCase
   end
 
   test "should render the weather icon based on conditions and time" do
-    travel_to Time.current.beginning_of_day do
-      assert_includes weather_icon_tag, "fa-moon"
-    end
+    Time.use_zone(Setting[:time_zone]) do
+      travel_to Time.current.beginning_of_day do
+        assert_includes weather_icon_tag, "fa-moon"
+      end
 
-    travel_to Time.current.middle_of_day do
-      assert_includes weather_icon_tag, "fa-sun"
-    end
+      travel_to Time.current.middle_of_day do
+        assert_includes weather_icon_tag, "fa-sun"
+      end
 
-    travel_to Time.current.end_of_day do
-      assert_includes weather_icon_tag, "fa-moon"
+      travel_to Time.current.end_of_day do
+        assert_includes weather_icon_tag, "fa-moon"
+      end
     end
 
     assert_includes weather_icon_tag, "Clear Sky"

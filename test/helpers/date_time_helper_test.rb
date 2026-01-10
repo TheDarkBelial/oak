@@ -17,14 +17,18 @@ class DateTimeHelperTest < ActionView::TestCase
   end
 
   test "should render the date with the format from settings" do
-    travel_to SIGNIFICANT_DATE do
-      assert_includes date_tag, "Tuesday, August 06 1991"
+    Time.use_zone(Setting[:time_zone]) do
+      travel_to SIGNIFICANT_DATE do
+        assert_includes date_tag, "Tuesday, August 06 1991"
+      end
     end
   end
 
   test "should render the time with the format from settings" do
-    travel_to SIGNIFICANT_DATE do
-      assert_includes time_tag, "9:04:02 pm"
+    Time.use_zone(Setting[:time_zone]) do
+      travel_to SIGNIFICANT_DATE do
+        assert_includes time_tag, "5:04:02 pm"
+      end
     end
   end
 
