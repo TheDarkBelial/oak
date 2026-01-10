@@ -1,6 +1,6 @@
 require "test_helper"
 
-class QuotesControllerErrorTest < ActionDispatch::IntegrationTest
+class IconsControllerErrorTest < ActionDispatch::IntegrationTest
   setup do
     @icon = icons(:unifi)
   end

@@ -99,6 +99,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "cuprite"
-  gem "webmock"
+
+  # Test helpers
+  gem "minitest-reporters"
   gem "simplecov"
+  gem "webmock"
 end

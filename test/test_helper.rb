@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "minitest/mock"
+require "minitest/reporters"
 require "webmock/minitest"
 
 # SimpleCov does not work with parallel workers by default.
@@ -10,6 +11,8 @@ if ENV["COVERAGE"].present?
   require "simplecov"
   SimpleCov.start(:rails)
 end
+
+Minitest::Reporters.use!(Minitest::Reporters::SpecReporter.new)
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
