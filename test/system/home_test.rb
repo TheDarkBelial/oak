@@ -15,7 +15,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "initial setup" do
-    visit home_url
+    visit root_url
 
     assert_text DATE_TIME_REGEX
     assert_text GREETING_REGEX
@@ -29,7 +29,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "applications page link" do
-    visit home_url
+    visit root_url
 
     within(".container") do
       click_link("Applications")
@@ -38,7 +38,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "bookmarks page link" do
-    visit home_url
+    visit root_url
 
     within(".container") do
       click_link("Bookmarks")
@@ -47,21 +47,21 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "initial application setup" do
-    visit home_url
+    visit root_url
 
     click_link("New Application")
     assert find_button("Create Application").visible?
   end
 
   test "initial category setup" do
-    visit home_url
+    visit root_url
 
     click_link("New Category")
     assert find_button("Create Category").visible?
   end
 
   test "settings navigation" do
-    visit home_url
+    visit root_url
 
     click_link(id: "navigation")
     within("#navigation_dropdown") do
@@ -71,7 +71,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "applications navigation" do
-    visit home_url
+    visit root_url
 
     click_link(id: "navigation")
     within("#navigation_dropdown") do
@@ -81,7 +81,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "bookmarks navigation" do
-    visit home_url
+    visit root_url
 
     click_link(id: "navigation")
     within("#navigation_dropdown") do
@@ -91,7 +91,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "themes navigation" do
-    visit home_url
+    visit root_url
 
     click_link(id: "navigation")
     within("#navigation_dropdown") do
@@ -101,7 +101,7 @@ class HomeTest < ApplicationSystemTestCase
   end
 
   test "theme select navigation" do
-    visit home_url
+    visit root_url
 
     click_link(id: "theme_select")
     within("#theme_select_dropdown") do
