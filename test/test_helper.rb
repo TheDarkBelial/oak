@@ -1,16 +1,19 @@
+if ENV["COVERAGE"].present?
+  require "simplecov"
+
+  SimpleCov.start(:rails) do
+    add_group "Components", "app/components"
+    add_group "Forms", "app/forms"
+    add_group "Services", "app/services"
+  end
+end
+
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "minitest/mock"
 require "minitest/reporters"
 require "webmock/minitest"
-
-# SimpleCov does not work with parallel workers by default.
-# So we will just disable it unless we want to get coverage stats.
-if ENV["COVERAGE"].present?
-  require "simplecov"
-  SimpleCov.start(:rails)
-end
 
 Minitest::Reporters.use!(Minitest::Reporters::SpecReporter.new)
 
@@ -21,7 +24,17 @@ Dir[Rails.root.join("test", "test_helpers", "**", "*.rb")].each { |file| require
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors) unless const_defined?(:SimpleCov)
+    parallelize(workers: :number_of_processors)
+
+    if ENV["COVERAGE"]
+      parallelize_setup do |worker|
+        SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}"
+      end
+
+      parallelize_teardown do |worker|
+        SimpleCov.result
+      end
+    end
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
